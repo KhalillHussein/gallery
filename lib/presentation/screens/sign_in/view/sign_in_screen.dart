@@ -13,6 +13,7 @@ class SignInScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: const <Widget>[
           LoginTitle(label: AppLocalization.textSignIn),
+          CupertinoTextField(),
         ],
       ),
     );

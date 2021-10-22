@@ -34,5 +34,7 @@ flutter:
     - assets/
     - assets/icons/
     - assets/images/
+    - assets/icons/general/
+    - assets/icons/tabs/
 
   uses-material-design: true

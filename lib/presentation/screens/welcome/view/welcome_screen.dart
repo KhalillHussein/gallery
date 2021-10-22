@@ -5,6 +5,7 @@ class WelcomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return CupertinoPageScaffold(
       child: Padding(
         padding: const EdgeInsets.symmetric(
@@ -20,7 +21,7 @@ class WelcomeScreen extends StatelessWidget {
               child: Text(
                 AppLocalization.textWelcome,
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.headline1,
+                style: theme.textTheme.headline1,
               ),
             ),
             Button(

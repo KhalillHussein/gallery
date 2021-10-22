@@ -14,27 +14,23 @@ class Button extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return CupertinoButton(
-      color: isOutline
-          ? AppColors.colorTransparent
-          : Theme.of(context).primaryColor,
+      color: isOutline ? AppColors.colorTransparent : theme.primaryColor,
       onPressed: onPressed,
       padding: EdgeInsets.symmetric(vertical: 9),
       borderRadius: BorderRadius.circular(AppInsets.insetsRadius),
       child: Text(
         label,
-        style: isOutline
-            ? Theme.of(context).textTheme.button
-            : Theme.of(context).primaryTextTheme.button,
+        style:
+            isOutline ? theme.textTheme.button : theme.primaryTextTheme.button,
       ),
     ).decorated(
       borderRadius: BorderRadius.circular(
         isOutline ? AppInsets.insetsRadius : 0.0,
       ),
       border: Border.all(
-        color: isOutline
-            ? Theme.of(context).primaryColor
-            : AppColors.colorTransparent,
+        color: isOutline ? theme.primaryColor : AppColors.colorTransparent,
       ),
     );
   }

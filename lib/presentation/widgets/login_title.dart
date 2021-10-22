@@ -10,12 +10,13 @@ class LoginTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Text(
       label,
-      style: Theme.of(context).textTheme.headline1,
+      style: theme.textTheme.headline1,
     ).border(
       bottom: 2.0,
-      color: Theme.of(context).colorScheme.secondary,
+      color: theme.colorScheme.secondary,
     );
   }
 }
