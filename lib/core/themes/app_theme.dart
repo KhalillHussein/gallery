@@ -18,7 +18,22 @@ class AppTheme {
   static final ThemeData lightTheme = ThemeData(
     brightness: AppColors.brightnessLight,
     primaryColor: AppColors.colorBlackGray,
-    indicatorColor: AppColors.colorGray_1,
+    indicatorColor: AppColors.colorPink,
+    progressIndicatorTheme: ProgressIndicatorThemeData(
+      color: AppColors.colorGray_1,
+    ),
+    splashColor: AppColors.colorTransparent,
+    splashFactory: InkRipple.splashFactory,
+    hoverColor: AppColors.colorTransparent,
+    highlightColor: AppColors.colorTransparent,
+    tabBarTheme: TabBarTheme(
+      labelColor: AppColors.colorBlack,
+      unselectedLabelColor: AppColors.colorGray_1,
+      labelStyle: AppStyles.textStyleBodyText1,
+      unselectedLabelStyle: AppStyles.textStyleBodyText2.copyWith(
+        fontSize: 17,
+      ),
+    ),
     scaffoldBackgroundColor: AppColors.colorWhite,
     colorScheme: ColorScheme.fromSwatch().copyWith(
       secondary: AppColors.colorPink,

@@ -13,6 +13,14 @@ class AppRouter {
         return MaterialPageRoute<SignInScreen>(
           builder: (_) => SignInScreen(),
         );
+      case AppRoutes.signUp:
+        return MaterialPageRoute<SignInScreen>(
+          builder: (_) => SignUpScreen(),
+        );
+      case AppRoutes.home:
+        return MaterialPageRoute<SignInScreen>(
+          builder: (_) => HomeScreen(),
+        );
       default:
         throw const RouteException('Route not found!');
     }

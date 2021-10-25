@@ -19,7 +19,7 @@ class AppLocalization {
   static const String textLoading = 'Loading...';
   static const String textSorry = 'Sorry!';
   static const String textNoPictures =
-      'There is no pictures. Pleace come back later.';
+      'There is no pictures.\nPleace come back later.';
   static const String textNext = 'Next';
   static const String textPublicationHasBeenModerated =
       'Publication has been moderated';

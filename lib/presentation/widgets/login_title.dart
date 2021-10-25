@@ -13,7 +13,7 @@ class LoginTitle extends StatelessWidget {
     final theme = Theme.of(context);
     return Text(
       label,
-      style: theme.textTheme.headline1,
+      style: theme.textTheme.headline1!.copyWith(height: 1.4),
     ).border(
       bottom: 2.0,
       color: theme.colorScheme.secondary,

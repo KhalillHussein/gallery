@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gallery/core/constants/localization.dart';
 import 'package:gallery/core/constants/routes.dart';
 import '../core/themes/app_theme.dart';
@@ -12,15 +11,12 @@ class GalleryApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      designSize: Size(375, 812),
-      builder: () => MaterialApp(
-        title: AppLocalization.textGallery,
-        theme: AppTheme.lightTheme,
-        debugShowCheckedModeBanner: false,
-        initialRoute: AppRoutes.welcome,
-        onGenerateRoute: AppRouter.onGenerateRoute,
-      ),
+    return MaterialApp(
+      title: AppLocalization.textGallery,
+      theme: AppTheme.lightTheme,
+      debugShowCheckedModeBanner: false,
+      initialRoute: AppRoutes.welcome,
+      onGenerateRoute: AppRouter.onGenerateRoute,
     );
   }
 }

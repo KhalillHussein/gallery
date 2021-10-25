@@ -6,8 +6,9 @@ class WelcomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return CupertinoPageScaffold(
-      child: Padding(
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      body: Padding(
         padding: const EdgeInsets.symmetric(
           horizontal: AppInsets.insetsPadding,
         ),
@@ -26,7 +27,10 @@ class WelcomeScreen extends StatelessWidget {
             ),
             Button(
               label: AppLocalization.textCreateAnAccount,
-              onPressed: () {},
+              onPressed: () => Navigator.pushNamed(
+                context,
+                AppRoutes.signUp,
+              ),
             ),
             const SizedBox(height: 10),
             Button(

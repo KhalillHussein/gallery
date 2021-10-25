@@ -42,5 +42,6 @@ class AppStyles {
   static const textStyleCaption = TextStyle(
     color: AppColors.colorGray_1,
     fontSize: 13,
+    fontWeight: FontWeight.w400,
   );
 }
