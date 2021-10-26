@@ -1,0 +1,39 @@
+name: gallery
+description: Gallery App.
+
+publish_to: "none"
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.14.0 <3.0.0"
+
+dependencies:
+  bloc: ^7.2.0
+  cupertino_icons: ^1.0.0
+  dio: ^4.0.0
+  equatable: ^2.0.3
+  flutter:
+    sdk: flutter
+  flutter_bloc: ^7.3.0
+  flutter_svg: ^0.23.0+1
+  formz: ^0.4.1
+  hydrated_bloc: ^7.1.0
+  lint: ^1.0.0
+  path: ^1.8.0
+  path_provider: ^2.0.5
+  styled_widget: ^0.4.0+3
+
+dev_dependencies:
+  flutter_native_splash: ^1.2.4
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  assets:
+    - assets/
+    - assets/icons/
+    - assets/icons/general/
+    - assets/icons/tabs/
+
+  uses-material-design: true
