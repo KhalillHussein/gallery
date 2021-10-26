@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../logic/cubit/request_cubit.dart';
+import 'package:gallery/logic/cubits/request_cubit/request_cubit.dart';
 
 typedef RequestWidgetBuilderInit<T> = Widget Function(
   BuildContext context,

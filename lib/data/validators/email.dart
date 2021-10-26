@@ -1,5 +1,5 @@
 import 'package:formz/formz.dart';
-import 'package:gallery/core/constants/formatters.dart';
+import 'package:gallery/core/utils/formatters.dart';
 
 /// Validation errors for the [Email] [FormzInput].
 enum EmailValidationError { invalid }

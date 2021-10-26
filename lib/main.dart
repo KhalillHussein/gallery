@@ -6,8 +6,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gallery/core/themes/app_theme.dart';
 import 'package:gallery/data/repositories/sign_up.dart';
 import 'package:gallery/data/services/sign_up.dart';
-import 'package:gallery/logic/cubit/sign_up_cubit.dart';
-import 'package:gallery/logic/cubit/validate_cubit.dart';
+import 'package:gallery/logic/cubits/sign_up_cubit.dart';
+import 'package:gallery/logic/cubits/validate_cubit/validate_cubit.dart';
 import 'package:gallery/presentation/app.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 
@@ -23,7 +23,6 @@ Future<void> main() async {
   );
   final httpClient = Dio();
   AppTheme.setStatusBarColor();
-  //TODO: REFACTOR THAT
   runApp(
     MultiBlocProvider(
       providers: <BlocProvider>[

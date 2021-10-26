@@ -7,6 +7,7 @@ import 'package:gallery/core/constants/assets.dart';
 import 'package:gallery/core/constants/colors.dart';
 import 'package:gallery/core/constants/insets.dart';
 import 'package:gallery/core/constants/localization.dart';
+import 'package:pattern_formatter/pattern_formatter.dart';
 import 'package:styled_widget/styled_widget.dart';
 
 import '../../core/constants/insets.dart';

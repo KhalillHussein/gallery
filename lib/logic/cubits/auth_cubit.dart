@@ -1,12 +1,12 @@
 import 'package:dio/dio.dart';
+import 'package:gallery/logic/cubits/request_cubit/request_cubit.dart';
 import '../../core/exceptions/api_exceptions.dart';
 import '../../data/models/user.dart';
 
-import '../../data/repositories/sign_up.dart';
-import 'request_cubit.dart';
+import '../../data/repositories/auth.dart';
 
-class SignUpCubit extends RequestCubit<SignUpRepository, User> {
-  SignUpCubit(SignUpRepository repository) : super(repository);
+class AuthCubit extends RequestCubit<AuthRepository, User> {
+  AuthCubit(AuthRepository repository) : super(repository);
 
   @override
   Future<void> loadData([Map<String, dynamic>? apiQuery]) async {
