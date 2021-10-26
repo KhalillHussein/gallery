@@ -7,6 +7,10 @@ import '../constants/colors.dart';
 
 /// Class that contains all the different themes of an app
 class AppTheme {
+  // This class is not meant to be instantiated or extended; this constructor
+  // prevents instantiation and extension.
+  AppTheme._();
+
   /// Custom page transitions
   static final _pageTransitionsTheme = PageTransitionsTheme(
     builders: const {

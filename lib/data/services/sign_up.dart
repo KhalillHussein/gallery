@@ -2,10 +2,10 @@ import 'package:dio/dio.dart';
 import '../../core/constants/url.dart';
 import 'base.dart';
 
-class AuthService extends BaseService<Dio> {
-  AuthService(Dio client) : super(client);
+class SignUpService extends BaseService<Dio> {
+  SignUpService(Dio client) : super(client);
 
-  Future<Response> auth(Map<String, dynamic>? apiQuery) async {
+  Future<Response> signUp(Map<String, dynamic>? apiQuery) async {
     return client.post(
       Url.signUp,
       data: apiQuery,

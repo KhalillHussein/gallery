@@ -1,9 +1,13 @@
 class Url {
-  static const String baseUrl = 'http://API_HOST';
+  // This class is not meant to be instantiated or extended; this constructor
+  // prevents instantiation and extension.
+  Url._();
 
-  ///URL for authentication
-  static const String auth = '$baseUrl/auth/';
+  static const String baseUrl = 'http://gallery.dev.webant.ru';
 
-  ///URL for list of transactions
-  static const String transactions = '$baseUrl/transactions/';
+  ///URL for sign in
+  static const String signIn = '$baseUrl/oauth/v2/';
+
+  ///URL for sign up
+  static const String signUp = '$baseUrl/api/users';
 }

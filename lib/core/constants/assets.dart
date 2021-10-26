@@ -1,4 +1,8 @@
 class AppAssets {
+  // This class is not meant to be instantiated or extended; this constructor
+  // prevents instantiation and extension.
+  AppAssets._();
+
   static const String logo = 'assets/icons/logo.png';
   static const String iconEye =
       'assets/icons/general/ant-design_eye-outlined.svg';

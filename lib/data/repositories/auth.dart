@@ -8,6 +8,6 @@ class AuthRepository extends BaseRepository<AuthService, User> {
   @override
   Future<User> fetchData([Map<String, dynamic>? apiQuery]) async {
     final response = await service.auth(apiQuery);
-    return User.fromJson(response.data);
+    return User.fromMap(response.data);
   }
 }

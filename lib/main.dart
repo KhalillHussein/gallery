@@ -4,6 +4,10 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gallery/core/themes/app_theme.dart';
+import 'package:gallery/data/repositories/sign_up.dart';
+import 'package:gallery/data/services/sign_up.dart';
+import 'package:gallery/logic/cubit/sign_up_cubit.dart';
+import 'package:gallery/logic/cubit/validate_cubit.dart';
 import 'package:gallery/presentation/app.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 
@@ -19,22 +23,20 @@ Future<void> main() async {
   );
   final httpClient = Dio();
   AppTheme.setStatusBarColor();
+  //TODO: REFACTOR THAT
   runApp(
-    GalleryApp(),
-    // MultiBlocProvider(
-    //   providers: <BlocProvider>[
-    //     BlocProvider<AuthCubit>(
-    //       create: (BuildContext context) => AuthCubit(
-    //         AuthRepository(AuthService(httpClient)),
-    //       ),
-    //     ),
-    //     BlocProvider<TransactionsCubit>(
-    //       create: (BuildContext context) => TransactionsCubit(
-    //         TransactionsRepository(TransactionsService(httpClient)),
-    //       ),
-    //     ),
-    //   ],
-    //   child: TransactionsApp(),
-    // ),
+    MultiBlocProvider(
+      providers: <BlocProvider>[
+        BlocProvider<ValidateCubit>(
+          create: (BuildContext context) => ValidateCubit(),
+        ),
+        BlocProvider<SignUpCubit>(
+          create: (BuildContext context) => SignUpCubit(
+            SignUpRepository(SignUpService(httpClient)),
+          ),
+        ),
+      ],
+      child: GalleryApp(),
+    ),
   );
 }

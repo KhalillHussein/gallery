@@ -1,4 +1,8 @@
 class AppLocalization {
+  // This class is not meant to be instantiated or extended; this constructor
+  // prevents instantiation and extension.
+  AppLocalization._();
+
   static const String textGallery = 'Gallery';
   static const String textWelcome = 'Welcome!';
   static const String textCreateAnAccount = 'Create an account';
@@ -34,4 +38,6 @@ class AppLocalization {
       'You can delete your account';
   static const String textSignOut = 'Sign Out';
   static const String textName = 'Sign Out';
+  static const String textEmailInvalid = 'Email invalid';
+  static const String textPasswordInvalid = 'Password invalid';
 }

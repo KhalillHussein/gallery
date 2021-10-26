@@ -6,11 +6,15 @@ class LoginTextField extends StatefulWidget {
     required this.hintText,
     required this.iconAsset,
     this.isRequired = false,
+    this.errorText,
+    this.onChanged,
   }) : super(key: key);
 
   final String hintText;
   final String iconAsset;
   final bool isRequired;
+  final String? errorText;
+  final ValueChanged<String>? onChanged;
 
   @override
   State<LoginTextField> createState() => _LoginTextFieldState();
@@ -18,23 +22,46 @@ class LoginTextField extends StatefulWidget {
 
 class _LoginTextFieldState extends State<LoginTextField> {
   bool isInputActionStarted = false;
+  late final TextEditingController _controller;
+
+  @override
+  void initState() {
+    _controller = TextEditingController();
+    _controller.addListener(_searchListener);
+    super.initState();
+  }
+
+  bool get isError => widget.errorText != null;
+
+  void _searchListener() {
+    setState(() {
+      if (_controller.text.isEmpty) {
+        isInputActionStarted = false;
+      } else {
+        isInputActionStarted = true;
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Stack(
+      clipBehavior: Clip.none,
       children: [
         CupertinoTextField(
-          onChanged: (value) {
-            setState(() {
-              if (value.isEmpty) {
-                isInputActionStarted = false;
-              } else {
-                isInputActionStarted = true;
-              }
-            });
-          },
+          controller: _controller,
+          onChanged: widget.onChanged,
           decoration: BoxDecoration(
-            border: Border.all(color: Theme.of(context).dividerColor),
+            border: Border.all(
+              color:
+                  isError ? AppColors.colorRed : Theme.of(context).dividerColor,
+            ),
             borderRadius: BorderRadius.circular(AppInsets.insetsRadius),
           ),
           placeholderStyle: Theme.of(context).textTheme.caption!.copyWith(
@@ -44,11 +71,23 @@ class _LoginTextFieldState extends State<LoginTextField> {
           suffix: Padding(
             padding: const EdgeInsets.only(right: 8),
             child: SvgPicture.asset(
-              widget.iconAsset,
+              isError ? AppAssets.iconTriangleDanger : widget.iconAsset,
               width: 20,
             ),
           ),
         ),
+        if (isError)
+          Positioned(
+            left: 0,
+            bottom: -17,
+            child: Text(
+              widget.errorText!,
+              style: Theme.of(context).textTheme.caption!.copyWith(
+                    fontSize: 12,
+                    color: AppColors.colorRed,
+                  ),
+            ),
+          ),
         if (widget.isRequired && !isInputActionStarted)
           Positioned(
             left: 7,

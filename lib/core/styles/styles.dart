@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:gallery/core/constants/colors.dart';
 
 class AppStyles {
+  // This class is not meant to be instantiated or extended; this constructor
+  // prevents instantiation and extension.
+  AppStyles._();
+
   ///Primary text styles
   static const primaryTextStyleButton = TextStyle(
     color: AppColors.colorWhite,

@@ -10,7 +10,7 @@ class HomeScreen extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(
-            horizontal: AppInsets.insetsPadding,
+            horizontal: AppInsets.insetsRadius,
           ),
           child: DefaultTabController(
             length: 2,
@@ -98,18 +98,21 @@ class _SearchBarState extends State<SearchBar> {
   }
 
   void _searchListener() {
-    setState(() {
-      if (_controller.text.isEmpty) {
+    if (_controller.text.isEmpty) {
+      setState(() {
         isInputActionStarted = false;
-      } else {
+      });
+    } else {
+      setState(() {
         isInputActionStarted = true;
-      }
-    });
+      });
+    }
   }
 
   @override
   void dispose() {
     _controller.dispose();
+    _focusNode.dispose();
     super.dispose();
   }
 
@@ -137,7 +140,7 @@ class _SearchBarState extends State<SearchBar> {
             suffixMode: OverlayVisibilityMode.always,
           ),
         ),
-        if (isInputActionStarted || _focusNode.hasPrimaryFocus)
+        if (isInputActionStarted && _focusNode.hasPrimaryFocus)
           Padding(
             padding: const EdgeInsets.only(left: 12),
             child: CupertinoTextButton(

@@ -35,10 +35,18 @@ class SignUpScreen extends StatelessWidget {
               iconAsset: AppAssets.iconCalendar,
             ),
             const SizedBox(height: 29),
-            const LoginTextField(
-              hintText: AppLocalization.textEmail,
-              iconAsset: AppAssets.iconMail,
-              isRequired: true,
+            BlocBuilder<ValidateCubit, ValidateState>(
+              builder: (context, state) {
+                return LoginTextField(
+                  hintText: AppLocalization.textEmail,
+                  iconAsset: AppAssets.iconMail,
+                  isRequired: true,
+                  onChanged: context.read<ValidateCubit>().emailChanged,
+                  errorText: state.email.invalid
+                      ? AppLocalization.textEmailInvalid
+                      : null,
+                );
+              },
             ),
             const SizedBox(height: 29),
             const LoginTextField(
