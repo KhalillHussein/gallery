@@ -2,8 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-import 'package:gallery/core/styles/styles.dart';
+
 import '../constants/colors.dart';
+import '../styles/styles.dart';
 
 /// Class that contains all the different themes of an app
 class AppTheme {

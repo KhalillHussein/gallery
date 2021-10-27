@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gallery/core/constants/localization.dart';
-import 'package:gallery/core/constants/routes.dart';
+import '../core/constants/localization.dart';
+import '../core/constants/routes.dart';
 import '../core/themes/app_theme.dart';
 import 'router/router_imports.dart';
 

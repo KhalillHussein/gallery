@@ -40,5 +40,7 @@ class AppLocalization {
   static const String textName = 'Sign Out';
   static const String textEmailInvalid = 'Email invalid';
   static const String textPasswordInvalid = 'Password invalid';
+  static const String textConfirmPasswordInvalid = 'Passwords do not match';
   static const String textUserNameInvalid = 'User Name invalid';
+  static const String textBirthdayInvalid = 'Date invalid';
 }

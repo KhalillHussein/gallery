@@ -3,7 +3,7 @@ import 'package:equatable/equatable.dart';
 ///Model class to storage user data
 class User extends Equatable {
   final String? birthday;
-  final List<String>? photos;
+  final List<dynamic>? photos;
   final String? username;
   final String? email;
   const User({

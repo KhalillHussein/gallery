@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gallery/core/constants/colors.dart';
+import '../constants/colors.dart';
 
 class AppStyles {
   // This class is not meant to be instantiated or extended; this constructor

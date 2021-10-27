@@ -1,15 +1,43 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:formz/formz.dart';
-import 'package:gallery/data/validators/confirm_password.dart';
-import 'package:gallery/data/validators/email.dart';
-import 'package:gallery/data/validators/password.dart';
-import 'package:gallery/data/validators/user_name.dart';
-
+import 'package:gallery/core/validators/date.dart';
+import '../../../core/validators/confirm_password.dart';
+import '../../../core/validators/email.dart';
+import '../../../core/validators/password.dart';
+import '../../../core/validators/user_name.dart';
 part 'validate_state.dart';
 
 class ValidateCubit extends Cubit<ValidateState> {
   ValidateCubit() : super(ValidateState());
+
+  void userNameChanged(String value) {
+    final userName = UserName.dirty(value);
+    emit(state.copyWith(
+      userName: userName,
+      status: Formz.validate([
+        state.email,
+        userName,
+        state.password,
+        state.confirmPassword,
+        state.birthday,
+      ]),
+    ));
+  }
+
+  void birthdayChanged(String value) {
+    final birthday = Date.dirty(value);
+    emit(state.copyWith(
+      birthday: birthday,
+      status: Formz.validate([
+        state.email,
+        birthday,
+        state.password,
+        state.userName,
+        state.confirmPassword,
+      ]),
+    ));
+  }
 
   void emailChanged(String value) {
     final email = Email.dirty(value);
@@ -20,22 +48,7 @@ class ValidateCubit extends Cubit<ValidateState> {
         state.password,
         state.userName,
         state.confirmPassword,
-      ]),
-    ));
-  }
-
-  void confirmPasswordChanged(String value) {
-    final confirmPassword = ConfirmedPassword.dirty(
-      original: state.password,
-      value: value,
-    );
-    emit(state.copyWith(
-      confirmPassword: confirmPassword,
-      status: Formz.validate([
-        state.email,
-        confirmPassword,
-        state.userName,
-        state.password,
+        state.birthday,
       ]),
     ));
   }
@@ -54,19 +67,24 @@ class ValidateCubit extends Cubit<ValidateState> {
         password,
         state.userName,
         state.confirmPassword,
+        state.birthday,
       ]),
     ));
   }
 
-  void userNameChanged(String value) {
-    final userName = UserName.dirty(value);
+  void confirmPasswordChanged(String value) {
+    final confirmPassword = ConfirmedPassword.dirty(
+      original: state.password,
+      value: value,
+    );
     emit(state.copyWith(
-      userName: userName,
+      confirmPassword: confirmPassword,
       status: Formz.validate([
         state.email,
-        userName,
+        confirmPassword,
+        state.userName,
         state.password,
-        state.confirmPassword,
+        state.birthday,
       ]),
     ));
   }

@@ -6,6 +6,7 @@ class ValidateState extends Equatable {
     this.password = const Password.pure(),
     this.confirmPassword = const ConfirmedPassword.pure(),
     this.userName = const UserName.pure(),
+    this.birthday = const Date.pure(),
     this.status = FormzStatus.pure,
     this.errorMessage,
   });
@@ -14,6 +15,7 @@ class ValidateState extends Equatable {
   final Password password;
   final ConfirmedPassword confirmPassword;
   final UserName userName;
+  final Date birthday;
   final FormzStatus status;
   final String? errorMessage;
 
@@ -22,6 +24,7 @@ class ValidateState extends Equatable {
         email,
         password,
         userName,
+        birthday,
         status,
         confirmPassword,
       ];
@@ -31,12 +34,14 @@ class ValidateState extends Equatable {
     Password? password,
     ConfirmedPassword? confirmPassword,
     UserName? userName,
+    Date? birthday,
     FormzStatus? status,
     String? errorMessage,
   }) {
     return ValidateState(
       email: email ?? this.email,
       password: password ?? this.password,
+      birthday: birthday ?? this.birthday,
       confirmPassword: confirmPassword ?? this.confirmPassword,
       userName: userName ?? this.userName,
       status: status ?? this.status,
