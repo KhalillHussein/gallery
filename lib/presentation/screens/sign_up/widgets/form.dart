@@ -16,6 +16,7 @@ class Form extends StatelessWidget {
         BlocBuilder<ValidateCubit, ValidateState>(
           builder: (context, state) {
             return LoginTextField(
+              initialValue: state.userName.value,
               hintText: AppLocalization.textUserName,
               iconAsset: AppAssets.iconUser,
               isRequired: true,
@@ -29,6 +30,7 @@ class Form extends StatelessWidget {
         const SizedBox(height: 29),
         BlocBuilder<ValidateCubit, ValidateState>(builder: (context, state) {
           return LoginTextField(
+            initialValue: state.birthday.value,
             hintText: AppLocalization.textBirthDay,
             iconAsset: AppAssets.iconCalendar,
             fieldType: TextFieldType.date,
@@ -42,6 +44,7 @@ class Form extends StatelessWidget {
         BlocBuilder<ValidateCubit, ValidateState>(
           builder: (context, state) {
             return LoginTextField(
+              initialValue: state.email.value,
               hintText: AppLocalization.textEmail,
               iconAsset: AppAssets.iconMail,
               isRequired: true,
@@ -55,6 +58,7 @@ class Form extends StatelessWidget {
         const SizedBox(height: 29),
         BlocBuilder<ValidateCubit, ValidateState>(builder: (context, state) {
           return LoginTextField(
+            initialValue: state.password.value,
             hintText: AppLocalization.textOldPassword,
             iconAsset: AppAssets.iconEye,
             isRequired: true,
@@ -68,6 +72,7 @@ class Form extends StatelessWidget {
         const SizedBox(height: 29),
         BlocBuilder<ValidateCubit, ValidateState>(builder: (context, state) {
           return LoginTextField(
+            initialValue: state.confirmPassword.value,
             hintText: AppLocalization.textConfirmPassword,
             iconAsset: AppAssets.iconEye,
             isRequired: true,

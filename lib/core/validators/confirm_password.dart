@@ -17,6 +17,8 @@ class ConfirmedPassword extends FormzInput<String, PasswordValidationError> {
 
   @override
   PasswordValidationError? validator(String? value) {
-    return original.value == value ? null : PasswordValidationError.invalid;
+    return original.value == value || value == null || value.isEmpty
+        ? null
+        : PasswordValidationError.invalid;
   }
 }

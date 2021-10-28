@@ -15,6 +15,7 @@ class LoginTextField extends StatefulWidget {
     this.errorText,
     this.onChanged,
     this.fieldType,
+    this.initialValue = '',
   }) : super(key: key);
 
   final String hintText;
@@ -23,6 +24,7 @@ class LoginTextField extends StatefulWidget {
   final String? errorText;
   final ValueChanged<String>? onChanged;
   final TextFieldType? fieldType;
+  final String initialValue;
 
   @override
   State<LoginTextField> createState() => _LoginTextFieldState();
@@ -36,7 +38,7 @@ class _LoginTextFieldState extends State<LoginTextField> {
   @override
   void initState() {
     _isObscure = widget.fieldType == TextFieldType.password;
-    _controller = TextEditingController();
+    _controller = TextEditingController()..text = widget.initialValue;
     _controller.addListener(_searchListener);
     super.initState();
   }
@@ -129,7 +131,9 @@ class _LoginTextFieldState extends State<LoginTextField> {
                   ),
             ),
           ),
-        if (widget.isRequired && !isInputActionStarted)
+        if (widget.isRequired &&
+            !isInputActionStarted &&
+            widget.initialValue.isEmpty)
           Positioned(
             left: 12,
             bottom: 0,

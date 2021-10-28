@@ -5,9 +5,9 @@ class Url {
 
   static const String baseUrl = 'http://gallery.dev.webant.ru';
 
-  ///URL for sign in
-  static const String signIn = '$baseUrl/oauth/v2/';
-
   ///URL for sign up
   static const String signUp = '$baseUrl/api/users';
+
+  ///URL for sign in
+  static const String signIn = '$baseUrl/oauth/v2/token';
 }

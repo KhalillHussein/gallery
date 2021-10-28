@@ -9,11 +9,9 @@ import 'package:gallery/core/constants/assets.dart';
 import 'package:gallery/core/constants/insets.dart';
 import 'package:gallery/core/constants/localization.dart';
 import 'package:gallery/core/constants/routes.dart';
-import 'package:gallery/data/models/user.dart';
 import 'package:gallery/logic/cubits/request_cubit/request_cubit.dart';
 import 'package:gallery/logic/cubits/sign_up_cubit.dart';
 import 'package:gallery/logic/cubits/validate_cubit/validate_cubit.dart';
-import 'package:gallery/presentation/widgets/request_builder.dart';
 
 import '../../widgets/widgets_imports.dart';
 

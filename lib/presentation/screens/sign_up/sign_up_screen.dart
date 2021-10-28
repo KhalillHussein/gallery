@@ -18,16 +18,14 @@ class SignUpScreen extends StatelessWidget {
         padding: const EdgeInsets.symmetric(
           horizontal: AppInsets.insetsPadding,
         ),
-        child: RequestBuilder<SignUpCubit, User>(
-          onInit: (context, state) => Form(),
-          onError: (context, state, value) => Form(),
-          onLoading: (context, state, value) => Loading(),
-          onListen: (context, state) {
+        child: BlocConsumer<SignUpCubit, RequestState>(
+          listener: (context, state) {
             if (state.status.isSuccess) {
               Navigator.pushNamedAndRemoveUntil(
                   context, AppRoutes.home, (Route<dynamic> route) => false);
             }
           },
+          builder: (context, state) => Form(),
         ),
       ),
     );
