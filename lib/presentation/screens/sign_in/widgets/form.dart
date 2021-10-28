@@ -13,27 +13,29 @@ class Form extends StatelessWidget {
         SizedBox(height: 100),
         const LoginTitle(label: AppLocalization.textSignIn),
         const SizedBox(height: 57),
-        BlocBuilder<ValidateCubit, ValidateState>(
+        BlocBuilder<ValidateSignInCubit, ValidateSignInState>(
           builder: (context, state) {
             return LoginTextField(
-              initialValue: state.email.value,
-              hintText: AppLocalization.textEmail,
-              iconAsset: AppAssets.iconMail,
-              onChanged: context.read<ValidateCubit>().emailChanged,
+              initialValue: state.userName.value,
+              hintText: AppLocalization.textUserName,
+              iconAsset: AppAssets.iconUser,
+              onChanged: context.read<ValidateSignInCubit>().userNameChanged,
               fieldType: TextFieldType.email,
-              errorText:
-                  state.email.invalid ? AppLocalization.textEmailInvalid : null,
+              errorText: state.userName.invalid
+                  ? AppLocalization.textUserNameInvalid
+                  : null,
             );
           },
         ),
         const SizedBox(height: 29),
-        BlocBuilder<ValidateCubit, ValidateState>(builder: (context, state) {
+        BlocBuilder<ValidateSignInCubit, ValidateSignInState>(
+            builder: (context, state) {
           return LoginTextField(
             initialValue: state.password.value,
             hintText: AppLocalization.textPassword,
             iconAsset: AppAssets.iconEye,
             fieldType: TextFieldType.password,
-            onChanged: context.read<ValidateCubit>().passwordChanged,
+            onChanged: context.read<ValidateSignInCubit>().passwordChanged,
             errorText: state.password.invalid
                 ? AppLocalization.textPasswordInvalid
                 : null,
@@ -49,16 +51,23 @@ class Form extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 50),
-        CupertinoTextButton(
-          label: AppLocalization.textSignIn,
-          isFilled: true,
-          padding: EdgeInsets.symmetric(vertical: 9, horizontal: 32),
-          style: Theme.of(context).primaryTextTheme.button!.copyWith(
-                fontSize: 17,
-              ),
-          onPressed: () => Navigator.pushNamedAndRemoveUntil(
-              context, AppRoutes.home, (Route<dynamic> route) => false),
-        ),
+        BlocBuilder<ValidateSignInCubit, ValidateSignInState>(
+            builder: (context, state) {
+          return CupertinoTextButton(
+            label: AppLocalization.textSignIn,
+            isFilled: true,
+            padding: EdgeInsets.symmetric(vertical: 9, horizontal: 32),
+            style: Theme.of(context).primaryTextTheme.button!.copyWith(
+                  fontSize: 17,
+                ),
+            onPressed: state.status.isValid
+                ? () => context.read<SignInCubit>().loadData(SignInApiQuery(
+                      password: state.password.value,
+                      username: state.userName.value,
+                    ).toMap())
+                : () {},
+          );
+        }),
         const SizedBox(height: 10),
         CupertinoTextButton(
           label: AppLocalization.textSignUp,

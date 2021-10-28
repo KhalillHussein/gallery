@@ -11,7 +11,7 @@ import 'package:gallery/core/constants/localization.dart';
 import 'package:gallery/core/constants/routes.dart';
 import 'package:gallery/logic/cubits/request_cubit/request_cubit.dart';
 import 'package:gallery/logic/cubits/sign_up_cubit.dart';
-import 'package:gallery/logic/cubits/validate_cubit/validate_cubit.dart';
+import 'package:gallery/logic/cubits/validate_sign_up_cubit/validate_sign_up_cubit.dart';
 
 import '../../widgets/widgets_imports.dart';
 

@@ -8,6 +8,9 @@ class Url {
   ///URL for sign up
   static const String signUp = '$baseUrl/api/users';
 
+  ///URL to fetch photos
+  static const String photos = '$baseUrl/api/photos';
+
   ///URL for sign in
   static const String signIn = '$baseUrl/oauth/v2/token';
 }

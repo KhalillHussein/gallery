@@ -2,18 +2,18 @@
 
 import 'package:gallery/core/constants/strings.dart';
 
-class AuthApiQuery {
+class SignInApiQuery {
   final String? username;
   final String? password;
   final String? clientId;
   final String? grantType;
   final String? clientSecret;
 
-  const AuthApiQuery({
+  const SignInApiQuery({
     this.username,
     this.password,
-    this.clientId = Strings.stringAppId,
-    this.grantType = Strings.stringOAuthGrantType,
+    this.clientId = Strings.appId,
+    this.grantType = Strings.oAuthGrantType,
     this.clientSecret,
   });
 
@@ -26,8 +26,4 @@ class AuthApiQuery {
       'client_secret': clientSecret,
     };
   }
-
-  // final bytes = utf8.encode("foobar");
-
-  // final digest = sha1.convert(utf8.encode(DateTime.now().toString()));
 }

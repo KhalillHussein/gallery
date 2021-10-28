@@ -1,15 +1,17 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:formz/formz.dart';
-import 'package:gallery/core/validators/date.dart';
+
 import '../../../core/validators/confirm_password.dart';
+import '../../../core/validators/date.dart';
 import '../../../core/validators/email.dart';
 import '../../../core/validators/password.dart';
 import '../../../core/validators/user_name.dart';
-part 'validate_state.dart';
 
-class ValidateCubit extends Cubit<ValidateState> {
-  ValidateCubit() : super(ValidateState());
+part 'validate_sign_up_state.dart';
+
+class ValidateSignUpCubit extends Cubit<ValidateSignUpState> {
+  ValidateSignUpCubit() : super(ValidateSignUpState());
 
   void userNameChanged(String value) {
     final userName = UserName.dirty(value);

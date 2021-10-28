@@ -1,4 +1,5 @@
 import 'package:formz/formz.dart';
+
 import '../utils/formatters.dart';
 
 /// Validation errors for the [Email] [FormzInput].

@@ -1,1 +1,1 @@
-export '';
+library settings;

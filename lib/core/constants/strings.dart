@@ -3,6 +3,7 @@ class Strings {
   // prevents instantiation and extension.
   Strings._();
 
-  static const String stringOAuthGrantType = 'password';
-  static const String stringAppId = 'com.example.gallery';
+  static const String oAuthGrantType = 'password';
+  static const String appId = 'com.example.gallery';
+  static const String dataObject = 'data';
 }

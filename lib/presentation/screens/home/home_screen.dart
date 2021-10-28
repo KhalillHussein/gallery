@@ -10,7 +10,7 @@ class HomeScreen extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(
-            horizontal: AppInsets.insetsRadius,
+            horizontal: AppInsets.insetsPadding,
           ),
           child: DefaultTabController(
             length: 2,
@@ -20,26 +20,7 @@ class HomeScreen extends StatelessWidget {
                   padding: EdgeInsets.symmetric(vertical: 10),
                   child: SearchBar(),
                 ),
-                TabBar(
-                  tabs: [
-                    Tab(
-                      height: 28,
-                      text: AppLocalization.textNew,
-                    ),
-                    Tab(
-                      height: 28,
-                      text: AppLocalization.textPopular,
-                    ),
-                  ],
-                ),
-                Expanded(
-                  child: TabBarView(
-                    children: [
-                      Loading(),
-                      Error(),
-                    ],
-                  ),
-                ),
+                Expanded(child: BodyTabsContent()),
               ],
             ),
           ),
@@ -75,86 +56,49 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-class SearchBar extends StatefulWidget {
-  const SearchBar({
+class BodyTabsContent extends StatelessWidget {
+  const BodyTabsContent({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<SearchBar> createState() => _SearchBarState();
-}
-
-class _SearchBarState extends State<SearchBar> {
-  bool isInputActionStarted = false;
-  late final TextEditingController _controller;
-  late final FocusNode _focusNode;
-
-  @override
-  void initState() {
-    _controller = TextEditingController();
-    _focusNode = FocusNode();
-    _controller.addListener(_searchListener);
-    super.initState();
-  }
-
-  void _searchListener() {
-    if (_controller.text.isEmpty) {
-      setState(() {
-        isInputActionStarted = false;
-      });
-    } else {
-      setState(() {
-        isInputActionStarted = true;
-      });
-    }
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    _focusNode.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return Row(
+    final bool isSuccess = context
+        .select<PhotosCubit, bool>((element) => element.state.status.isSuccess);
+    return Column(
       children: [
+        TabBar(
+          indicatorColor: isSuccess
+              ? Theme.of(context).indicatorColor
+              : AppColors.colorTransparent,
+          labelColor: isSuccess
+              ? Theme.of(context).tabBarTheme.labelColor
+              : Theme.of(context).tabBarTheme.unselectedLabelColor,
+          tabs: const [
+            Tab(
+              height: 28,
+              text: AppLocalization.textNew,
+            ),
+            Tab(
+              height: 28,
+              text: AppLocalization.textPopular,
+            ),
+          ],
+        ),
         Expanded(
-          child: CupertinoSearchTextField(
-            controller: _controller,
-            focusNode: _focusNode,
-            prefixInsets: EdgeInsetsDirectional.fromSTEB(6, 0, 0, 2),
-            suffixInsets: EdgeInsetsDirectional.fromSTEB(0, 0, 8, 0),
-            prefixIcon: Icon(CupertinoIcons.search, size: 18),
-            suffixIcon: isInputActionStarted
-                ? Icon(
-                    CupertinoIcons.xmark_circle_fill,
-                    color: AppColors.colorGray_3,
-                    size: 18,
-                  )
-                : Icon(
-                    CupertinoIcons.mic_fill,
-                    color: AppColors.colorGray_3,
-                  ),
-            suffixMode: OverlayVisibilityMode.always,
+          child: RequestBuilder<PhotosCubit, List<Photo>>(
+            onError: (context, state, value) => Error(),
+            onLoading: (context, state, value) => Loading(),
+            onLoaded: (context, state, value) => Expanded(
+              child: TabBarView(
+                children: const [
+                  PhotosGrid(),
+                  Error(),
+                ],
+              ),
+            ),
           ),
         ),
-        if (isInputActionStarted && _focusNode.hasPrimaryFocus)
-          Padding(
-            padding: const EdgeInsets.only(left: 12),
-            child: CupertinoTextButton(
-              label: AppLocalization.textCancel,
-              style: Theme.of(context).textTheme.caption!.copyWith(
-                    fontSize: 17,
-                    color: CupertinoColors.activeBlue,
-                  ),
-              onPressed: () {
-                _controller.clear();
-                _focusNode.unfocus();
-              },
-            ),
-          )
       ],
     );
   }
