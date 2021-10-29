@@ -8,21 +8,19 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: AppInsets.insetsPadding,
-          ),
-          child: DefaultTabController(
-            length: 2,
-            child: Column(
-              children: const <Widget>[
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 10),
-                  child: SearchBar(),
+        child: DefaultTabController(
+          length: 2,
+          child: Column(
+            children: const <Widget>[
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  vertical: 10,
+                  horizontal: AppInsets.insetsPadding,
                 ),
-                Expanded(child: BodyTabsContent()),
-              ],
-            ),
+                child: SearchBar(),
+              ),
+              Expanded(child: BodyTabsContent()),
+            ],
           ),
         ),
       ),
@@ -67,31 +65,36 @@ class BodyTabsContent extends StatelessWidget {
         .select<PhotosCubit, bool>((element) => element.state.status.isSuccess);
     return Column(
       children: [
-        TabBar(
-          indicatorColor: isSuccess
-              ? Theme.of(context).indicatorColor
-              : AppColors.colorTransparent,
-          labelColor: isSuccess
-              ? Theme.of(context).tabBarTheme.labelColor
-              : Theme.of(context).tabBarTheme.unselectedLabelColor,
-          tabs: const [
-            Tab(
-              height: 28,
-              text: AppLocalization.textNew,
-            ),
-            Tab(
-              height: 28,
-              text: AppLocalization.textPopular,
-            ),
-          ],
+        Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: AppInsets.insetsPadding,
+          ),
+          child: TabBar(
+            indicatorColor: isSuccess
+                ? Theme.of(context).indicatorColor
+                : AppColors.colorTransparent,
+            labelColor: isSuccess
+                ? Theme.of(context).tabBarTheme.labelColor
+                : Theme.of(context).tabBarTheme.unselectedLabelColor,
+            tabs: const [
+              Tab(
+                height: 28,
+                text: AppLocalization.textNew,
+              ),
+              Tab(
+                height: 28,
+                text: AppLocalization.textPopular,
+              ),
+            ],
+          ),
         ),
         Expanded(
           child: RequestBuilder<PhotosCubit, List<Photo>>(
             onError: (context, state, value) => Error(),
             onLoading: (context, state, value) => Loading(),
             onLoaded: (context, state, value) => TabBarView(
-              children: const [
-                PhotosGrid(),
+              children: [
+                PhotosGrid(photos: value ?? []),
                 Error(),
               ],
             ),

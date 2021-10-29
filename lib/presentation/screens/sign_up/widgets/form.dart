@@ -7,6 +7,8 @@ class Form extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bool isLoading = context
+        .select<SignUpCubit, bool>((value) => value.state.status.isLoading);
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
@@ -97,7 +99,7 @@ class Form extends StatelessWidget {
             style: Theme.of(context).primaryTextTheme.button!.copyWith(
                   fontSize: 17,
                 ),
-            onPressed: state.status.isValid
+            onPressed: state.status.isValid || !isLoading
                 ? () => context.read<SignUpCubit>().loadData(SignUpApiQuery(
                       email: state.email.value,
                       password: state.password.value,

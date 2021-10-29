@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:equatable/equatable.dart';
 
 ///Model class to storage user data
@@ -6,6 +8,7 @@ class User extends Equatable {
   final List<dynamic>? photos;
   final String? username;
   final String? email;
+
   const User({
     this.birthday,
     this.photos,
@@ -24,10 +27,10 @@ class User extends Equatable {
 
   factory User.fromMap(Map<String, dynamic> map) {
     return User(
-      birthday: map['birthday'],
-      photos: map['photos'],
-      username: map['username'],
-      email: map['email'],
+      birthday: map['birthday'] as String?,
+      photos: map['photos'] as List<dynamic>?,
+      username: map['username'] as String?,
+      email: map['email'] as String?,
     );
   }
 
@@ -38,6 +41,10 @@ class User extends Equatable {
         username,
         email,
       ];
+
+  String toJson() => json.encode(toMap());
+
+  factory User.fromJson(String source) => User.fromMap(json.decode(source));
 }
 
 // {

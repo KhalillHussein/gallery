@@ -23,6 +23,7 @@ class SignUpScreen extends StatelessWidget {
             if (state.status.isSuccess) {
               Navigator.pushNamedAndRemoveUntil(
                   context, AppRoutes.home, (Route<dynamic> route) => false);
+              context.read<PhotosCubit>().loadData(PhotosApiQuery().toMap());
             }
           },
           builder: (context, state) => Form(),
