@@ -4,6 +4,7 @@ class Strings {
   Strings._();
 
   static const String oAuthGrantType = 'password';
-  static const String appId = 'com.example.gallery';
+  static const String clientId =
+      '39zev8813cg0o8wkgw4kkgcow4ck0kckc0o0w8c8scg0k48ww4';
   static const String dataObject = 'data';
 }

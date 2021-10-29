@@ -3,6 +3,7 @@ class PhotosApiQuery {
   final bool popularImg;
   final int page;
   final int limit;
+
   PhotosApiQuery({
     this.newImg = true,
     this.popularImg = true,

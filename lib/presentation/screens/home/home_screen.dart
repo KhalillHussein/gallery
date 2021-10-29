@@ -89,13 +89,11 @@ class BodyTabsContent extends StatelessWidget {
           child: RequestBuilder<PhotosCubit, List<Photo>>(
             onError: (context, state, value) => Error(),
             onLoading: (context, state, value) => Loading(),
-            onLoaded: (context, state, value) => Expanded(
-              child: TabBarView(
-                children: const [
-                  PhotosGrid(),
-                  Error(),
-                ],
-              ),
+            onLoaded: (context, state, value) => TabBarView(
+              children: const [
+                PhotosGrid(),
+                Error(),
+              ],
             ),
           ),
         ),

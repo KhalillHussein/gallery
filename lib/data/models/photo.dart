@@ -1,14 +1,14 @@
 import 'package:equatable/equatable.dart';
 
 class Photo extends Equatable {
-  final int id;
-  final String name;
-  final String dateCreate;
-  final String description;
-  final bool newImg;
-  final bool popularImg;
-  final ImageDataInfo imageDataInfo;
-  final String user;
+  final int? id;
+  final String? name;
+  final String? dateCreate;
+  final String? description;
+  final bool? newImg;
+  final bool? popularImg;
+  final ImageDataInfo? imageDataInfo;
+  final String? user;
 
   const Photo({
     required this.id,
@@ -29,28 +29,27 @@ class Photo extends Equatable {
       'description': description,
       'new': newImg,
       'popular': popularImg,
-      'imageDataInfo': imageDataInfo.toMap(),
+      'imageDataInfo': imageDataInfo?.toMap(),
       'user': user,
     };
   }
 
   factory Photo.fromMap(Map<String, dynamic> map) {
     return Photo(
-      id: map['id'],
-      name: map['name'],
-      dateCreate: map['dateCreate'],
-      description: map['description'],
-      newImg: map['new'],
-      popularImg: map['popular'],
-      imageDataInfo: map['imageDataInfo'] != null
-          ? ImageDataInfo.fromMap(map['imageDataInfo'])
-          : map['imageDataInfo'],
-      user: map['user'],
+      id: map['id'] as int?,
+      name: map['name'] as String?,
+      dateCreate: map['dateCreate'] as String?,
+      description: map['description'] as String?,
+      newImg: map['new'] as bool?,
+      popularImg: map['popular'] as bool?,
+      imageDataInfo:
+          ImageDataInfo.fromMap(map['imageDataInfo'] as Map<String, dynamic>?),
+      user: map['user'] as String?,
     );
   }
 
   @override
-  List<Object> get props {
+  List<Object?> get props {
     return [
       id,
       name,
@@ -65,8 +64,8 @@ class Photo extends Equatable {
 }
 
 class ImageDataInfo extends Equatable {
-  final int id;
-  final String name;
+  final int? id;
+  final String? name;
   const ImageDataInfo({
     required this.id,
     required this.name,
@@ -79,13 +78,13 @@ class ImageDataInfo extends Equatable {
     };
   }
 
-  factory ImageDataInfo.fromMap(Map<String, dynamic> map) {
+  factory ImageDataInfo.fromMap(Map<String, dynamic>? map) {
     return ImageDataInfo(
-      id: map['id'],
-      name: map['name'],
+      id: map?['id'] as int?,
+      name: map?['name'] as String?,
     );
   }
 
   @override
-  List<Object> get props => [id, name];
+  List<Object?> get props => [id, name];
 }

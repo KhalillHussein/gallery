@@ -12,7 +12,7 @@ class SignInApiQuery {
   const SignInApiQuery({
     this.username,
     this.password,
-    this.clientId = Strings.appId,
+    this.clientId = Strings.clientId,
     this.grantType = Strings.oAuthGrantType,
     this.clientSecret,
   });
