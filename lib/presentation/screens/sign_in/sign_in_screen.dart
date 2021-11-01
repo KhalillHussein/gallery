@@ -22,7 +22,7 @@ class SignInScreen extends StatelessWidget {
           listener: (context, state) {
             if (state.status.isSuccess) {
               Navigator.pushNamedAndRemoveUntil(
-                  context, AppRoutes.home, (Route<dynamic> route) => false);
+                  context, AppRoutes.start, (Route<dynamic> route) => false);
             }
           },
           builder: (context, state) => Form(),

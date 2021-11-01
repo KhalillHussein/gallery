@@ -12,8 +12,7 @@ class PhotosCubit extends RequestCubit<PhotosRepository, List<Photo>> {
     emit(RequestState.loading(state.value));
     try {
       final data = await repository.fetchData(apiQuery);
-
-      emit(RequestState.loaded(data));
+      emit(RequestState.loaded(data, apiQuery!['page'] + 1));
     } on DioError catch (e) {
       emit(RequestState.error(ApiException.fromDioError(e).message));
     } catch (e) {

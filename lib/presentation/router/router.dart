@@ -4,6 +4,8 @@ class AppRouter {
   const AppRouter._();
 
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
+    final Map<String, dynamic>? args =
+        settings.arguments as Map<String, dynamic>?;
     switch (settings.name) {
       case AppRoutes.welcome:
         return MaterialPageRoute<WelcomeScreen>(
@@ -17,9 +19,18 @@ class AppRouter {
         return MaterialPageRoute<SignInScreen>(
           builder: (_) => SignUpScreen(),
         );
-      case AppRoutes.home:
+      case AppRoutes.start:
         return MaterialPageRoute<SignInScreen>(
-          builder: (_) => HomeScreen(),
+          builder: (_) => StartScreen(),
+        );
+      case AppRoutes.settings:
+        return MaterialPageRoute<SettingsScreen>(
+          builder: (_) => SettingsScreen(),
+        );
+      case AppRoutes.photoDetail:
+        final photo = args!['photo'] as Photo;
+        return MaterialPageRoute<PhotoDetailScreen>(
+          builder: (_) => PhotoDetailScreen(photo: photo),
         );
       default:
         throw const RouteException('Route not found!');

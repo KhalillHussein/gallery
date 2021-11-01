@@ -1,15 +1,18 @@
 import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
+import 'package:intl/intl.dart';
 
 ///Model class to storage user data
 class User extends Equatable {
+  final int? id;
   final String? birthday;
   final List<dynamic>? photos;
   final String? username;
   final String? email;
 
   const User({
+    this.id,
     this.birthday,
     this.photos,
     this.username,
@@ -18,6 +21,7 @@ class User extends Equatable {
 
   Map<String, dynamic> toMap() {
     return {
+      'id': id,
       'birthday': birthday,
       'photos': photos,
       'username': username,
@@ -31,6 +35,7 @@ class User extends Equatable {
       photos: map['photos'] as List<dynamic>?,
       username: map['username'] as String?,
       email: map['email'] as String?,
+      id: map['id'] as int?,
     );
   }
 
@@ -40,7 +45,11 @@ class User extends Equatable {
         photos,
         username,
         email,
+        id,
       ];
+
+  String get formattedDate =>
+      DateFormat('dd.MM.yyyy').format(DateTime.parse(birthday!));
 
   String toJson() => json.encode(toMap());
 

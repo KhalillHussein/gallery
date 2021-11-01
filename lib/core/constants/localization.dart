@@ -43,4 +43,5 @@ class AppLocalization {
   static const String textConfirmPasswordInvalid = 'Passwords do not match';
   static const String textUserNameInvalid = 'User Name invalid';
   static const String textBirthdayInvalid = 'Date invalid';
+  static const String textAdd = 'Add';
 }

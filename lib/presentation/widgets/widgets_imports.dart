@@ -18,3 +18,4 @@ part 'login_title.dart';
 part 'text_button.dart';
 part 'error.dart';
 part 'loading.dart';
+part 'avatar.dart';

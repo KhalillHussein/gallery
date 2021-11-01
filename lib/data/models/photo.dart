@@ -1,4 +1,6 @@
 import 'package:equatable/equatable.dart';
+import 'package:gallery/core/constants/url.dart';
+import 'package:intl/intl.dart';
 
 class Photo extends Equatable {
   final int? id;
@@ -43,10 +45,15 @@ class Photo extends Equatable {
       newImg: map['new'] as bool?,
       popularImg: map['popular'] as bool?,
       imageDataInfo:
-          ImageDataInfo.fromMap(map['imageDataInfo'] as Map<String, dynamic>?),
+          ImageDataInfo.fromMap(map['image'] as Map<String, dynamic>?),
       user: map['user'] as String?,
     );
   }
+
+  String get photoUrl => '${Url.media}/${imageDataInfo!.name}';
+
+  String get formattedDate =>
+      DateFormat('dd.MM.yyyy').format(DateTime.parse(dateCreate!));
 
   @override
   List<Object?> get props {

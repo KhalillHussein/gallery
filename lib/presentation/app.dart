@@ -21,7 +21,7 @@ class GalleryApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: context.read<SignUpCubit>().state.value != null ||
               context.read<SignInCubit>().state.value != null
-          ? AppRoutes.home
+          ? AppRoutes.start
           : AppRoutes.welcome,
       onGenerateRoute: AppRouter.onGenerateRoute,
     );

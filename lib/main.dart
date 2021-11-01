@@ -4,15 +4,12 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gallery/core/themes/app_theme.dart';
-import 'package:gallery/data/repositories/media_object.dart';
 import 'package:gallery/data/repositories/photos.dart';
 import 'package:gallery/data/repositories/sign_in.dart';
 import 'package:gallery/data/repositories/sign_up.dart';
-import 'package:gallery/data/services/media_object.dart';
 import 'package:gallery/data/services/photos.dart';
 import 'package:gallery/data/services/sign_in.dart';
 import 'package:gallery/data/services/sign_up.dart';
-import 'package:gallery/logic/cubits/media_object_cubit.dart';
 import 'package:gallery/logic/cubits/photos_cubit.dart';
 import 'package:gallery/logic/cubits/sign_in_cubit.dart';
 import 'package:gallery/logic/cubits/sign_up_cubit.dart';
@@ -55,11 +52,6 @@ Future<void> main() async {
         BlocProvider<PhotosCubit>(
           create: (BuildContext context) => PhotosCubit(
             PhotosRepository(PhotosService(httpClient)),
-          ),
-        ),
-        BlocProvider<MediaObjectCubit>(
-          create: (BuildContext context) => MediaObjectCubit(
-            MediaObjectRepository(MediaObjectService(httpClient)),
           ),
         ),
       ],
