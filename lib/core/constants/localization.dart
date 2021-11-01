@@ -37,7 +37,8 @@ class AppLocalization {
   static const String textYouCanDeleteYourAccount =
       'You can delete your account';
   static const String textSignOut = 'Sign Out';
-  static const String textName = 'Sign Out';
+  static const String textName = 'Name';
+  static const String textDescription = 'Description';
   static const String textEmailInvalid = 'Email invalid';
   static const String textPasswordInvalid = 'Password invalid';
   static const String textConfirmPasswordInvalid = 'Passwords do not match';

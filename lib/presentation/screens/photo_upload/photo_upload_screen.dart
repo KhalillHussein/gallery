@@ -44,17 +44,31 @@ class PhotoUploadScreen extends StatelessWidget {
             ),
           ),
           Spacer(),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: CupertinoAppBar(
-              title: Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: AppInsets.insetsPadding,
-                  vertical: 10,
+          Material(
+            color: Colors.white,
+            child: Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: AppInsets.insetsPadding,
+                vertical: 10,
+              ),
+              alignment: Alignment.bottomLeft,
+              decoration: BoxDecoration(
+                border: Border(
+                  top: BorderSide(
+                    color: Theme.of(context).dividerColor,
+                  ),
                 ),
-                child: Column(
-                  children: [],
-                ),
+              ),
+              child: Column(
+                children: [
+                  CupertinoTextField(
+                    placeholder: AppLocalization.textName,
+                  ),
+                  CupertinoTextField(
+                    placeholder: AppLocalization.textDescription,
+                    maxLines: 5,
+                  )
+                ],
               ),
             ),
           ),
