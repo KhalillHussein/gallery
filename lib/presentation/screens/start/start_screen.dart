@@ -10,27 +10,33 @@ class StartScreen extends StatefulWidget {
 class _StartScreenState extends State<StartScreen> {
   int _currentIndex = 0;
   final ImagePicker _picker = ImagePicker();
+  final List<Widget> tabs = [
+    HomeTab(),
+    SizedBox(),
+    ProfileTab(),
+  ];
   XFile? image;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      body: IndexedStack(index: _currentIndex, children: const [
-        HomeTab(),
-        SizedBox(),
-        ProfileTab(),
-      ]),
+      body: tabs.elementAt(_currentIndex),
       bottomNavigationBar: CupertinoTabBar(
-        onTap: (index) => _currentIndex != index
-            ? setState(() async {
-                _currentIndex = index;
-                _currentIndex == 1
-                    ? image =
-                        await _picker.pickImage(source: ImageSource.gallery)
-                    : null;
-              })
-            : null,
+        onTap: (index) async {
+          switch (index) {
+            case 0:
+              goToNextTab(index);
+              break;
+            case 1:
+              // image = await _picker.pickImage(source: ImageSource.gallery);
+              Navigator.pushNamed(context, AppRoutes.photoUpload);
+              break;
+            case 2:
+              goToNextTab(index);
+              break;
+          }
+        },
         currentIndex: _currentIndex,
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         border: Border(
@@ -57,5 +63,13 @@ class _StartScreenState extends State<StartScreen> {
         ],
       ),
     );
+  }
+
+  void goToNextTab(int index) {
+    if (_currentIndex != index) {
+      setState(() {
+        _currentIndex = index;
+      });
+    }
   }
 }

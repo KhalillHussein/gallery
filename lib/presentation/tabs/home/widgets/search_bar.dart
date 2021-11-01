@@ -3,7 +3,10 @@ part of home;
 class SearchBar extends StatefulWidget {
   const SearchBar({
     Key? key,
+    this.onChanged,
   }) : super(key: key);
+
+  final ValueChanged<String>? onChanged;
 
   @override
   State<SearchBar> createState() => _SearchBarState();
@@ -49,6 +52,7 @@ class _SearchBarState extends State<SearchBar> {
           child: CupertinoSearchTextField(
             controller: _controller,
             focusNode: _focusNode,
+            onChanged: widget.onChanged,
             prefixInsets: EdgeInsetsDirectional.fromSTEB(6, 0, 0, 2),
             suffixInsets: EdgeInsetsDirectional.fromSTEB(0, 0, 8, 0),
             prefixIcon: Icon(CupertinoIcons.search, size: 18),

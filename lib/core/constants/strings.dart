@@ -3,11 +3,21 @@ class Strings {
   // prevents instantiation and extension.
   Strings._();
 
-  static const String oAuthGrantType = 'password';
-  static const String clientId =
-      '2e44j1pnmim8osg0o8k08owoog8gg4kckc4g04gkosgg0okowc';
-
-  static const String clientSecret =
-      '33m4fybfy2048c84ss4884kgs00wco0ww4kwckwws4kg80g8c8';
+  static const String tokenType = 'Bearer';
+  static const String authorization = 'Authorization';
+  static const String clientSecret = 'client_secret';
+  static const String password = 'password';
+  static const String username = 'username';
+  static const String grantType = 'grant_type';
+  static const String clientId = 'client_id';
+  static const String allowedGrantTypes = 'allowedGrantTypes';
+  static const String userAccessToken = 'USER_ACCESS_TOKEN';
+  static const String userRefreshToken = 'USER_REFRESH_TOKEN';
+  static const String userId = 'USER_ID';
+  static const String userSecret = 'USER_SECRET';
+  static const String name = 'name';
+  static const String refreshToken = 'refresh_token';
+  static const String accessToken = 'access_token';
+  static const String roleUser = 'ROLE_USER';
   static const String dataObject = 'data';
 }

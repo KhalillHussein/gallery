@@ -29,7 +29,7 @@ class _PhotosGridState extends State<PhotosGrid> {
               page: page,
               limit: widget.imageCount,
               userId: context.read<SignInCubit>().state.value?.id ??
-                  context.read<SignUpCubit>().state.value?.id)
+                  context.read<SignUpCubit>().state.value!.id)
           .toMap());
     });
     super.initState();

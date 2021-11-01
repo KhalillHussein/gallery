@@ -7,7 +7,7 @@ class Tabs extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bool isSuccess =
+    final bool isItemsExist =
         context.select<PhotosCubit, bool>((value) => value.state.value != null);
     return DefaultTabController(
       length: 2,
@@ -18,10 +18,10 @@ class Tabs extends StatelessWidget {
               horizontal: AppInsets.insetsPadding,
             ),
             child: TabBar(
-              indicatorColor: isSuccess
+              indicatorColor: isItemsExist
                   ? Theme.of(context).indicatorColor
                   : AppColors.colorTransparent,
-              labelColor: isSuccess
+              labelColor: isItemsExist
                   ? Theme.of(context).tabBarTheme.labelColor
                   : Theme.of(context).tabBarTheme.unselectedLabelColor,
               tabs: const [

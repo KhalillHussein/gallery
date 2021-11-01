@@ -5,18 +5,27 @@ class Url {
 
   static const String baseUrl = 'http://gallery.dev.webant.ru';
 
-  ///URL for sign up
-  static const String signUp = '$baseUrl/api/users';
-
-  ///URL to fetch photos
-  static const String photos = '$baseUrl/api/photos';
+  ///URL for sign in & refresh token
+  static const String token = '$baseUrl/oauth/v2/token';
 
   ///URL to get image path
   static const String media = '$baseUrl/media';
 
-  ///URL to fetch media object
-  static const String mediaObject = '$baseUrl/api/media_objects';
+  //API URL
+  static const String api = '$baseUrl/api';
 
-  ///URL for sign in
-  static const String signIn = '$baseUrl/oauth/v2/token';
+  ///URL for creating client resource
+  static const String clients = '$api/clients';
+
+  ///URL for sign up
+  static const String signUp = '$api/users';
+
+  ///URL to get current user
+  static const String currentUser = '$api/users/current';
+
+  ///URL to fetch photos
+  static const String photos = '$api/photos';
+
+  ///URL to fetch media object
+  static const String mediaObject = '$api/media_objects';
 }

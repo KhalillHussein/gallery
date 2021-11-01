@@ -3,10 +3,15 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:gallery/core/themes/app_theme.dart';
+import 'package:gallery/data/repositories/client.dart';
+import 'package:gallery/data/repositories/current_user.dart';
 import 'package:gallery/data/repositories/photos.dart';
 import 'package:gallery/data/repositories/sign_in.dart';
 import 'package:gallery/data/repositories/sign_up.dart';
+import 'package:gallery/data/services/client.dart';
+import 'package:gallery/data/services/current_user.dart';
 import 'package:gallery/data/services/photos.dart';
 import 'package:gallery/data/services/sign_in.dart';
 import 'package:gallery/data/services/sign_up.dart';
@@ -28,7 +33,9 @@ Future<void> main() async {
   HydratedBloc.storage = await HydratedStorage.build(
     storageDirectory: await getTemporaryDirectory(),
   );
-  final httpClient = Dio();
+  final storage = FlutterSecureStorage();
+  final httpClient = Dio()
+    ..interceptors.add(LogInterceptor(responseBody: true, requestBody: true));
   AppTheme.setStatusBarColor();
   runApp(
     MultiBlocProvider(
@@ -41,7 +48,9 @@ Future<void> main() async {
         ),
         BlocProvider<SignInCubit>(
           create: (BuildContext context) => SignInCubit(
-            SignInRepository(SignInService(httpClient)),
+            SignInRepository(SignInService(httpClient), storage),
+            ClientRepository(ClientService(httpClient)),
+            CurrentUserRepository(CurrentUserService(httpClient)),
           ),
         ),
         BlocProvider<SignUpCubit>(

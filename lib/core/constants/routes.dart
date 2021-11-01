@@ -9,4 +9,5 @@ class AppRoutes {
   static const String start = '/start';
   static const String photoDetail = '/photo_detail';
   static const String settings = '/settings';
+  static const String photoUpload = '/photo_upload';
 }

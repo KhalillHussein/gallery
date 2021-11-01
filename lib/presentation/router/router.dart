@@ -27,6 +27,10 @@ class AppRouter {
         return MaterialPageRoute<SettingsScreen>(
           builder: (_) => SettingsScreen(),
         );
+      case AppRoutes.photoUpload:
+        return MaterialPageRoute<PhotoUploadScreen>(
+          builder: (_) => PhotoUploadScreen(),
+        );
       case AppRoutes.photoDetail:
         final photo = args!['photo'] as Photo;
         return MaterialPageRoute<PhotoDetailScreen>(

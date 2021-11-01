@@ -3,6 +3,7 @@ class PhotosApiQuery {
   final bool popularImg;
   final int page;
   final int limit;
+  final String? name;
   final int? userId;
 
   PhotosApiQuery({
@@ -11,6 +12,7 @@ class PhotosApiQuery {
     this.page = 1,
     this.limit = 10,
     this.userId,
+    this.name,
   });
 
   Map<String, dynamic> toMap() {
@@ -20,6 +22,7 @@ class PhotosApiQuery {
       'page': page,
       'limit': limit,
       'user.id': userId,
+      'name': name,
     }..removeWhere((key, value) => value == null);
   }
 }

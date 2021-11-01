@@ -39,6 +39,7 @@ class AppTheme {
         fontSize: 17,
       ),
     ),
+    canvasColor: AppColors.colorGray_4,
     scaffoldBackgroundColor: AppColors.colorWhite,
     colorScheme: ColorScheme.fromSwatch().copyWith(
       secondary: AppColors.colorPink,

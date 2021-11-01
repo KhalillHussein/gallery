@@ -64,11 +64,12 @@ class Form extends StatelessWidget {
                         fontSize: 17,
                       ),
                   onPressed: state.status.isValid
-                      ? () =>
+                      ? () {
                           context.read<SignInCubit>().loadData(SignInApiQuery(
-                                password: state.password.value,
                                 username: state.userName.value,
-                              ).toMap())
+                                password: state.password.value,
+                              ).toMap());
+                        }
                       : () {},
                 );
         }),

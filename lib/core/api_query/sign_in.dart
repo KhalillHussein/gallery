@@ -1,5 +1,3 @@
-//Model class to storage auth form data
-
 import 'package:gallery/core/constants/strings.dart';
 
 class SignInApiQuery {
@@ -12,8 +10,8 @@ class SignInApiQuery {
   const SignInApiQuery({
     this.username,
     this.password,
-    this.clientId = Strings.clientId,
-    this.grantType = Strings.oAuthGrantType,
+    this.clientId,
+    this.grantType = Strings.password,
     this.clientSecret,
   });
 

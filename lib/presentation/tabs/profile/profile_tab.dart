@@ -44,7 +44,7 @@ class ProfileTab extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           Text(
-            context.read<SignInCubit>().state.value?.birthday ??
+            context.read<SignInCubit>().state.value?.formattedDate ??
                 context.read<SignUpCubit>().state.value!.formattedDate,
             style: Theme.of(context).textTheme.caption!.copyWith(fontSize: 12),
           ),
