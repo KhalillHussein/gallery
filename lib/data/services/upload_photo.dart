@@ -1,7 +1,4 @@
-import 'package:dio/dio.dart';
-import 'package:gallery/core/network/auth_interceptor.dart';
-import '../../core/constants/url.dart';
-import 'base.dart';
+part of service;
 
 //Service that creates media object
 class UploadPhotoService extends BaseService<Dio> {
@@ -9,6 +6,7 @@ class UploadPhotoService extends BaseService<Dio> {
 
   Future<Response> uploadPhoto(Map<String, dynamic>? apiQuery) async {
     client.interceptors.clear();
+    print(apiQuery);
     client.interceptors.add(AuthInterceptor(client));
     return client.post(
       Url.photos,

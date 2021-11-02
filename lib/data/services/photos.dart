@@ -1,6 +1,4 @@
-import 'package:dio/dio.dart';
-import '../../core/constants/url.dart';
-import 'base.dart';
+part of service;
 
 class PhotosService extends BaseService<Dio> {
   PhotosService(Dio client) : super(client);

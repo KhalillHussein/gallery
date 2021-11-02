@@ -1,7 +1,4 @@
-import 'package:gallery/data/services/current_user.dart';
-
-import '../models/user.dart';
-import 'base.dart';
+part of repository;
 
 class CurrentUserRepository extends BaseRepository<CurrentUserService, User> {
   const CurrentUserRepository(CurrentUserService service) : super(service);

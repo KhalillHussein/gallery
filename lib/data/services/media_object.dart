@@ -1,7 +1,4 @@
-import 'package:dio/dio.dart';
-import 'package:gallery/core/network/auth_interceptor.dart';
-import '../../core/constants/url.dart';
-import 'base.dart';
+part of service;
 
 //Service that creates media object
 class MediaObjectService extends BaseService<Dio> {

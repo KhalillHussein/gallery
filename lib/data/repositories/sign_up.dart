@@ -1,6 +1,4 @@
-import '../models/user.dart';
-import '../services/sign_up.dart';
-import 'base.dart';
+part of repository;
 
 class SignUpRepository extends BaseRepository<SignUpService, User> {
   const SignUpRepository(SignUpService service) : super(service);

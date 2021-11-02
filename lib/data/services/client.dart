@@ -1,6 +1,4 @@
-import 'package:dio/dio.dart';
-import '../../core/constants/url.dart';
-import 'base.dart';
+part of service;
 
 class ClientService extends BaseService<Dio> {
   ClientService(Dio client) : super(client);

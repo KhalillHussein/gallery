@@ -4,8 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:gallery/core/api_query/media_object.dart';
 import 'package:gallery/core/api_query/photos.dart';
 import 'package:gallery/data/models/photo.dart';
-import 'package:gallery/data/repositories/media_object.dart';
-import 'package:gallery/data/repositories/upload_photo.dart';
+import 'package:gallery/data/repositories/repositories_import.dart';
 
 import '../../core/exceptions/api_exceptions.dart';
 import 'request_cubit/request_cubit.dart';

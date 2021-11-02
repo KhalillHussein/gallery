@@ -64,7 +64,7 @@ class ProfileTab extends StatelessWidget {
                             ),
                       ),
                       TextSpan(
-                        text: ' 999+',
+                        text: ' 0',
                         style: Theme.of(context).textTheme.caption!.copyWith(
                               fontSize: 12,
                             ),
@@ -83,7 +83,7 @@ class ProfileTab extends StatelessWidget {
                             ),
                       ),
                       TextSpan(
-                        text: ' 999+',
+                        text: ' 0',
                         style: Theme.of(context).textTheme.caption!.copyWith(
                               fontSize: 12,
                             ),

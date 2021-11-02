@@ -1,7 +1,4 @@
-import 'package:gallery/core/constants/strings.dart';
-import 'package:gallery/data/models/photo.dart';
-import 'package:gallery/data/repositories/base.dart';
-import 'package:gallery/data/services/photos.dart';
+part of repository;
 
 class PhotosRepository extends BaseRepository<PhotosService, List<Photo>> {
   const PhotosRepository(PhotosService service) : super(service);

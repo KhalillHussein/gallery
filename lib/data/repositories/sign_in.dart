@@ -1,8 +1,4 @@
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:gallery/core/constants/strings.dart';
-
-import '../services/sign_in.dart';
-import 'base.dart';
+part of repository;
 
 class SignInRepository
     extends BaseRepository<SignInService, Map<String, dynamic>> {

@@ -4,9 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:gallery/core/api_query/client.dart';
 import 'package:gallery/core/api_query/sign_in.dart';
 import 'package:gallery/core/constants/strings.dart';
-import 'package:gallery/data/repositories/client.dart';
-import 'package:gallery/data/repositories/current_user.dart';
-import 'package:gallery/data/repositories/sign_in.dart';
+import 'package:gallery/data/repositories/repositories_import.dart';
 
 import '../../core/exceptions/api_exceptions.dart';
 import '../../data/models/user.dart';

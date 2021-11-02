@@ -48,11 +48,14 @@ class _PhotoUploadScreenState extends State<PhotoUploadScreen> {
               CupertinoTextButton(
                 label: AppLocalization.textAdd,
                 onPressed: () {
-                  context.read<UploadPhotoCubit>().loadData({
-                    'file': File(widget.imageFile.path),
-                    'name': _nameEditingController.text,
-                    'description': _descriptionEditingController.text,
-                  });
+                  context.read<UploadPhotoCubit>().loadData(
+                        PhotoUploadApiQuery(
+                                file: File(widget.imageFile.path),
+                                name: _nameEditingController.text,
+                                description: _descriptionEditingController.text)
+                            .toMap(),
+                      );
+
                   Navigator.pop(context);
                 },
                 style: Theme.of(context).textTheme.button!.copyWith(
@@ -82,52 +85,9 @@ class _PhotoUploadScreenState extends State<PhotoUploadScreen> {
                     ),
                   ),
                   Spacer(),
-                  Material(
-                    color: Colors.white,
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: AppInsets.insetsPadding,
-                      ),
-                      alignment: Alignment.bottomLeft,
-                      decoration: BoxDecoration(
-                        border: Border(
-                          top: BorderSide(
-                            color: Theme.of(context).dividerColor,
-                          ),
-                        ),
-                      ),
-                      child: Column(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 10),
-                            child: CupertinoTextField(
-                              controller: _nameEditingController,
-                              placeholder: AppLocalization.textName,
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: Theme.of(context).dividerColor,
-                                ),
-                                borderRadius: BorderRadius.circular(
-                                    AppInsets.insetsRadius),
-                              ),
-                            ),
-                          ),
-                          CupertinoTextField(
-                            controller: _descriptionEditingController,
-                            placeholder: AppLocalization.textDescription,
-                            maxLines: 5,
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: Theme.of(context).dividerColor,
-                              ),
-                              borderRadius:
-                                  BorderRadius.circular(AppInsets.insetsRadius),
-                            ),
-                          ),
-                          const SizedBox(height: 119)
-                        ],
-                      ),
-                    ),
+                  BottomBar(
+                    nameEditingController: _nameEditingController,
+                    descriptionEditingController: _descriptionEditingController,
                   ),
                 ],
               ),

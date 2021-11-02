@@ -1,6 +1,6 @@
 class PhotosApiQuery {
-  final bool newImg;
-  final bool popularImg;
+  final bool? newImg;
+  final bool? popularImg;
   final int page;
   final int limit;
   final String? name;

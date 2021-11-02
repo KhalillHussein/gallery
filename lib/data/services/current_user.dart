@@ -1,7 +1,4 @@
-import 'package:dio/dio.dart';
-import 'package:gallery/core/network/auth_interceptor.dart';
-import '../../core/constants/url.dart';
-import 'base.dart';
+part of service;
 
 class CurrentUserService extends BaseService<Dio> {
   CurrentUserService(Dio client) : super(client);

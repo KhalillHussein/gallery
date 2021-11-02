@@ -1,4 +1,4 @@
-import 'package:gallery/data/repositories/base.dart';
+import 'package:gallery/data/repositories/repositories_import.dart';
 import 'package:gallery/logic/cubits/request_cubit/request_cubit.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 

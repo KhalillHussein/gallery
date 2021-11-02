@@ -1,6 +1,4 @@
-import 'package:gallery/data/models/photo.dart';
-import 'package:gallery/data/repositories/base.dart';
-import 'package:gallery/data/services/upload_photo.dart';
+part of repository;
 
 class UploadPhotoRepository extends BaseRepository<UploadPhotoService, Photo> {
   const UploadPhotoRepository(UploadPhotoService service) : super(service);

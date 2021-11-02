@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-
-import '../../../data/repositories/base.dart';
+import 'package:gallery/data/repositories/repositories_import.dart';
 
 part 'request_state.dart';
 

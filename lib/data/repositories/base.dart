@@ -1,4 +1,4 @@
-import '../services/base.dart';
+part of repository;
 
 abstract class BaseRepository<S extends BaseService, T> {
   final S service;

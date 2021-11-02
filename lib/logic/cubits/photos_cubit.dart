@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:gallery/data/repositories/photos.dart';
+import 'package:gallery/data/repositories/repositories_import.dart';
+
 import 'package:gallery/logic/cubits/request_cubit/request_cubit.dart';
 import '../../core/exceptions/api_exceptions.dart';
 import '../../data/models/photo.dart';

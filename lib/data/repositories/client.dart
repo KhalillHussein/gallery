@@ -1,7 +1,4 @@
-import 'package:gallery/data/models/client.dart';
-import 'package:gallery/data/services/client.dart';
-
-import 'base.dart';
+part of repository;
 
 class ClientRepository extends BaseRepository<ClientService, Client> {
   const ClientRepository(ClientService service) : super(service);

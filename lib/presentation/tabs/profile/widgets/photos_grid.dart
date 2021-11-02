@@ -3,13 +3,9 @@ part of profile;
 class PhotosGrid extends StatefulWidget {
   const PhotosGrid({
     Key? key,
-    this.popularImages = false,
-    this.newImages = false,
     this.imageCount = 10,
   }) : super(key: key);
 
-  final bool popularImages;
-  final bool newImages;
   final int imageCount;
 
   @override
@@ -24,8 +20,8 @@ class _PhotosGridState extends State<PhotosGrid> {
   void initState() {
     _pagingController.addPageRequestListener((page) {
       context.read<PhotosCubit>().loadData(PhotosApiQuery(
-              popularImg: widget.popularImages,
-              newImg: widget.newImages,
+              popularImg: null,
+              newImg: null,
               page: page,
               limit: widget.imageCount,
               userId: context.read<SignInCubit>().state.value?.id ??

@@ -1,6 +1,4 @@
-import 'package:gallery/data/models/media_object.dart';
-import 'package:gallery/data/repositories/base.dart';
-import 'package:gallery/data/services/media_object.dart';
+part of repository;
 
 class MediaObjectRepository
     extends BaseRepository<MediaObjectService, MediaObject> {
