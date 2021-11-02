@@ -7,17 +7,22 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:gallery/core/themes/app_theme.dart';
 import 'package:gallery/data/repositories/client.dart';
 import 'package:gallery/data/repositories/current_user.dart';
+import 'package:gallery/data/repositories/media_object.dart';
 import 'package:gallery/data/repositories/photos.dart';
 import 'package:gallery/data/repositories/sign_in.dart';
 import 'package:gallery/data/repositories/sign_up.dart';
+import 'package:gallery/data/repositories/upload_photo.dart';
 import 'package:gallery/data/services/client.dart';
 import 'package:gallery/data/services/current_user.dart';
+import 'package:gallery/data/services/media_object.dart';
 import 'package:gallery/data/services/photos.dart';
 import 'package:gallery/data/services/sign_in.dart';
 import 'package:gallery/data/services/sign_up.dart';
+import 'package:gallery/data/services/upload_photo.dart';
 import 'package:gallery/logic/cubits/photos_cubit.dart';
 import 'package:gallery/logic/cubits/sign_in_cubit.dart';
 import 'package:gallery/logic/cubits/sign_up_cubit.dart';
+import 'package:gallery/logic/cubits/upload_photo_cubit.dart';
 import 'package:gallery/logic/cubits/validate_sign_in_cubit/validate_sign_in_cubit.dart';
 import 'package:gallery/logic/cubits/validate_sign_up_cubit/validate_sign_up_cubit.dart';
 import 'package:gallery/presentation/app.dart';
@@ -62,6 +67,11 @@ Future<void> main() async {
           create: (BuildContext context) => PhotosCubit(
             PhotosRepository(PhotosService(httpClient)),
           ),
+        ),
+        BlocProvider<UploadPhotoCubit>(
+          create: (BuildContext context) => UploadPhotoCubit(
+              UploadPhotoRepository(UploadPhotoService(httpClient)),
+              MediaObjectRepository(MediaObjectService(httpClient))),
         ),
       ],
       child: GalleryApp(),

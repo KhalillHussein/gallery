@@ -9,13 +9,11 @@ class StartScreen extends StatefulWidget {
 
 class _StartScreenState extends State<StartScreen> {
   int _currentIndex = 0;
-  final ImagePicker _picker = ImagePicker();
   final List<Widget> tabs = [
     HomeTab(),
     SizedBox(),
     ProfileTab(),
   ];
-  XFile? image;
 
   @override
   Widget build(BuildContext context) {
@@ -23,14 +21,19 @@ class _StartScreenState extends State<StartScreen> {
       resizeToAvoidBottomInset: false,
       body: tabs.elementAt(_currentIndex),
       bottomNavigationBar: CupertinoTabBar(
-        onTap: (index) async {
+        onTap: (index) {
           switch (index) {
             case 0:
               goToNextTab(index);
               break;
             case 1:
-              // image = await _picker.pickImage(source: ImageSource.gallery);
-              Navigator.pushNamed(context, AppRoutes.photoUpload);
+              ImagePicker().pickImage(source: ImageSource.gallery).then(
+                    (image) => image != null
+                        ? Navigator.pushNamed(context, AppRoutes.photoUpload,
+                            arguments: {'file': image})
+                        : null,
+                  );
+
               break;
             case 2:
               goToNextTab(index);

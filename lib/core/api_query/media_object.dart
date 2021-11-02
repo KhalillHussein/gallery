@@ -1,13 +1,18 @@
+import 'dart:io';
+
+import 'package:dio/dio.dart';
+
 class MediaObjectApiQuery {
-  final int id;
+  final File? file;
 
   MediaObjectApiQuery({
-    required this.id,
+    this.file,
   });
 
   Map<String, dynamic> toMap() {
     return {
-      'id': id,
+      'file': MultipartFile.fromFileSync(file!.path,
+          filename: file!.path.split('/').last),
     };
   }
 }

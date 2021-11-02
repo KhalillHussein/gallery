@@ -34,17 +34,16 @@ class SignInCubit extends RequestCubit<SignInRepository, User> {
         username: apiQuery[Strings.username],
         clientId: '${clientData.id}_${clientData.randomId}',
       ).toMap());
-      final userData = await currentUserRepository.fetchData();
-      repository.saveData(
+      await repository.saveData(
           accessToken: data[Strings.accessToken],
           refreshToken: data[Strings.refreshToken],
           id: '${clientData.id}_${clientData.randomId}',
           secret: clientData.secret!);
+      final userData = await currentUserRepository.fetchData();
       emit(RequestState.loaded(userData));
     } on DioError catch (e) {
       emit(RequestState.error(ApiException.fromDioError(e).message));
     } catch (e) {
-      // rethrow;
       emit(RequestState.error(e.toString()));
     }
   }

@@ -55,7 +55,7 @@ class Form extends StatelessWidget {
             builder: (context, state) {
           return context.select<SignInCubit, bool>(
                   (value) => value.state.status.isLoading)
-              ? CircularProgressIndicator()
+              ? CircularProgressIndicator(strokeWidth: 1)
               : CupertinoTextButton(
                   label: AppLocalization.textSignIn,
                   isFilled: true,

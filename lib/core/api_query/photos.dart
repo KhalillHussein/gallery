@@ -5,6 +5,8 @@ class PhotosApiQuery {
   final int limit;
   final String? name;
   final int? userId;
+  final String? description;
+  final String? image;
 
   PhotosApiQuery({
     this.newImg = true,
@@ -13,6 +15,8 @@ class PhotosApiQuery {
     this.limit = 10,
     this.userId,
     this.name,
+    this.description,
+    this.image,
   });
 
   Map<String, dynamic> toMap() {
@@ -23,6 +27,7 @@ class PhotosApiQuery {
       'limit': limit,
       'user.id': userId,
       'name': name,
+      'image': image,
     }..removeWhere((key, value) => value == null);
   }
 }

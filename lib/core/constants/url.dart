@@ -26,6 +26,6 @@ class Url {
   ///URL to fetch photos
   static const String photos = '$api/photos';
 
-  ///URL to fetch media object
+  ///URL for media objects
   static const String mediaObject = '$api/media_objects';
 }

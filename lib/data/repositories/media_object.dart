@@ -8,7 +8,7 @@ class MediaObjectRepository
 
   @override
   Future<MediaObject> fetchData([Map<String, dynamic>? apiQuery]) async {
-    final response = await service.getMediaObject(apiQuery);
+    final response = await service.postMediaObject(apiQuery);
     return MediaObject.fromMap(response.data);
   }
 }

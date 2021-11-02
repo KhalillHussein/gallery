@@ -9,6 +9,7 @@ import 'package:gallery/presentation/screens/settings/settings_imports.dart';
 import 'package:gallery/presentation/screens/sign_in/sign_in_imports.dart';
 import 'package:gallery/presentation/screens/sign_up/sign_up_imports.dart';
 import 'package:gallery/presentation/screens/start/start_imports.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../core/constants/routes.dart';
 import '../../core/exceptions/route_exception.dart';

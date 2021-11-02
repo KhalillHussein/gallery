@@ -9,9 +9,9 @@ class MediaObject extends Equatable {
   final String? name;
 
   const MediaObject({
-    required this.id,
-    required this.file,
-    required this.name,
+    this.id,
+    this.file,
+    this.name,
   });
 
   Map<String, dynamic> toMap() {
@@ -31,8 +31,6 @@ class MediaObject extends Equatable {
       name: map['name'] as String?,
     );
   }
-
-  // Uint8List get imageFromBytes => base64.decode(file!.split(',').last);
 
   @override
   List<Object?> get props => [id, file, name];
