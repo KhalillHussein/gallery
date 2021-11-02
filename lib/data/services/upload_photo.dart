@@ -6,7 +6,6 @@ class UploadPhotoService extends BaseService<Dio> {
 
   Future<Response> uploadPhoto(Map<String, dynamic>? apiQuery) async {
     client.interceptors.clear();
-    print(apiQuery);
     client.interceptors.add(AuthInterceptor(client));
     return client.post(
       Url.photos,
