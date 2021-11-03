@@ -18,7 +18,7 @@ class PhotoInfo extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text(
-              photo.name!,
+              photo.name ?? '---',
               style: Theme.of(context).textTheme.bodyText1!.copyWith(
                     fontSize: 20,
                   ),

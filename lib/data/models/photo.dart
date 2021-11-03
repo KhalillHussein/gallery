@@ -52,8 +52,9 @@ class Photo extends Equatable {
 
   String get photoUrl => '${Url.media}/${imageDataInfo!.name}';
 
-  String get formattedDate =>
-      DateFormat('dd.MM.yyyy').format(DateTime.parse(dateCreate!));
+  String get formattedDate => dateCreate != null
+      ? DateFormat('dd.MM.yyyy').format(DateTime.parse(dateCreate!))
+      : '---';
 
   @override
   List<Object?> get props {

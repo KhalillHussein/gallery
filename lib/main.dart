@@ -7,6 +7,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:gallery/core/themes/app_theme.dart';
 import 'package:gallery/data/repositories/repositories_import.dart';
 import 'package:gallery/data/services/services_import.dart';
+import 'package:gallery/logic/cubits/authentication_cubit.dart';
 
 import 'package:gallery/logic/cubits/photos_cubit.dart';
 import 'package:gallery/logic/cubits/sign_in_cubit.dart';
@@ -48,6 +49,12 @@ Future<void> main() async {
         BlocProvider<SignUpCubit>(
           create: (BuildContext context) => SignUpCubit(
             SignUpRepository(SignUpService(httpClient)),
+          ),
+        ),
+        BlocProvider<AuthenticationCubit>(
+          create: (BuildContext context) => AuthenticationCubit(
+            signInCubit: context.read<SignInCubit>(),
+            signUpCubit: context.read<SignUpCubit>(),
           ),
         ),
         BlocProvider<PhotosCubit>(

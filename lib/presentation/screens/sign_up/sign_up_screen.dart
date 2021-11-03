@@ -14,18 +14,12 @@ class SignUpScreen extends StatelessWidget {
           padding: EdgeInsets.symmetric(vertical: 13),
         ),
       ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(
-          horizontal: AppInsets.insetsPadding,
-        ),
-        child: BlocConsumer<SignUpCubit, RequestState>(
-          listener: (context, state) {
-            if (state.status.isSuccess) {
-              Navigator.pushNamedAndRemoveUntil(
-                  context, AppRoutes.start, (Route<dynamic> route) => false);
-            }
-          },
-          builder: (context, state) => Form(),
+      body: Center(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.symmetric(
+            horizontal: AppInsets.insetsPadding,
+          ),
+          child: Form(),
         ),
       ),
     );

@@ -18,15 +18,7 @@ class SignInScreen extends StatelessWidget {
         padding: const EdgeInsets.symmetric(
           horizontal: AppInsets.insetsPadding,
         ),
-        child: BlocConsumer<SignInCubit, RequestState>(
-          listener: (context, state) {
-            if (state.status.isSuccess) {
-              Navigator.pushNamedAndRemoveUntil(
-                  context, AppRoutes.start, (Route<dynamic> route) => false);
-            }
-          },
-          builder: (context, state) => Form(),
-        ),
+        child: Form(),
       ),
     );
   }

@@ -44,11 +44,6 @@ class PhotoDetailScreen extends StatelessWidget {
                 vertical: 11, horizontal: AppInsets.insetsPadding),
             child: PhotoInfo(photo: photo),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(
-                vertical: 4, horizontal: AppInsets.insetsPadding),
-            child: Tags(),
-          ),
         ],
       ),
     );

@@ -10,9 +10,8 @@ class Form extends StatelessWidget {
     final bool isLoading = context
         .select<SignUpCubit, bool>((value) => value.state.status.isLoading);
     return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisSize: MainAxisSize.min,
       children: <Widget>[
-        SizedBox(height: 100),
         const LoginTitle(label: AppLocalization.textSignUp),
         const SizedBox(height: 57),
         BlocBuilder<ValidateSignUpCubit, ValidateSignUpState>(
@@ -102,7 +101,7 @@ class Form extends StatelessWidget {
                   style: Theme.of(context).primaryTextTheme.button!.copyWith(
                         fontSize: 17,
                       ),
-                  onPressed: state.status.isValid || !isLoading
+                  onPressed: state.status.isValid
                       ? () =>
                           context.read<SignUpCubit>().loadData(SignUpApiQuery(
                                 email: state.email.value,
