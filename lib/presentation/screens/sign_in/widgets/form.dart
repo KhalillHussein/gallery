@@ -19,6 +19,7 @@ class Form extends StatelessWidget {
               initialValue: state.userName.value,
               hintText: AppLocalization.textUserName,
               iconAsset: AppAssets.iconUser,
+              textInputAction: TextInputAction.next,
               onChanged: context.read<ValidateSignInCubit>().userNameChanged,
               fieldType: TextFieldType.email,
               errorText: state.userName.invalid
@@ -55,7 +56,7 @@ class Form extends StatelessWidget {
             builder: (context, state) {
           return context.select<SignInCubit, bool>(
                   (value) => value.state.status.isLoading)
-              ? CircularProgressIndicator(strokeWidth: 1)
+              ? Loading(loadingType: LoadingType.withoutLabel)
               : CupertinoTextButton(
                   label: AppLocalization.textSignIn,
                   isFilled: true,

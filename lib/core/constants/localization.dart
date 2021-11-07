@@ -45,4 +45,6 @@ class AppLocalization {
   static const String textUserNameInvalid = 'User Name invalid';
   static const String textBirthdayInvalid = 'Date invalid';
   static const String textAdd = 'Add';
+  static const String textSomethingWentWrong =
+      'Something went wrong. Tap to try again.';
 }

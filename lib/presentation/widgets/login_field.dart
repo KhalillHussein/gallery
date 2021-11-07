@@ -12,6 +12,7 @@ class LoginTextField extends StatefulWidget {
     required this.hintText,
     required this.iconAsset,
     this.isRequired = false,
+    this.textInputAction = TextInputAction.done,
     this.errorText,
     this.onChanged,
     this.fieldType,
@@ -25,6 +26,7 @@ class LoginTextField extends StatefulWidget {
   final ValueChanged<String>? onChanged;
   final TextFieldType? fieldType;
   final String initialValue;
+  final TextInputAction textInputAction;
 
   @override
   State<LoginTextField> createState() => _LoginTextFieldState();
@@ -80,6 +82,7 @@ class _LoginTextFieldState extends State<LoginTextField> {
       children: [
         CupertinoTextField(
           controller: _controller,
+          textInputAction: widget.textInputAction,
           onChanged: widget.onChanged,
           keyboardType: keyboardType,
           inputFormatters: [

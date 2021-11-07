@@ -1,11 +1,11 @@
 part of widgets;
 
-enum LoadingType { page, list }
+enum LoadingType { withLabel, withoutLabel }
 
 class Loading extends StatelessWidget {
   const Loading({
     Key? key,
-    this.loadingType = LoadingType.page,
+    this.loadingType = LoadingType.withLabel,
   }) : super(key: key);
 
   final LoadingType loadingType;
@@ -17,8 +17,8 @@ class Loading extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           CircularProgressIndicator(strokeWidth: 1),
-          if (loadingType == LoadingType.page) const SizedBox(height: 10),
-          if (loadingType == LoadingType.page)
+          if (loadingType == LoadingType.withLabel) const SizedBox(height: 10),
+          if (loadingType == LoadingType.withLabel)
             Text(
               AppLocalization.textLoading,
               style:

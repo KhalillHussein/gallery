@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:dio/dio.dart';
 import 'package:gallery/core/api_query/media_object.dart';
 import 'package:gallery/core/api_query/photos.dart';
+import 'package:gallery/core/constants/strings.dart';
 import 'package:gallery/data/models/photo.dart';
 import 'package:gallery/data/repositories/repositories_import.dart';
 
@@ -21,11 +22,11 @@ class UploadPhotoCubit extends RequestCubit<UploadPhotoRepository, Photo> {
   Future<void> loadData([Map<String, dynamic>? apiQuery]) async {
     emit(RequestState.loading(state.value));
     try {
-      final mediaObjectData = await mediaObjectRepository
-          .fetchData(MediaObjectApiQuery(file: apiQuery!['file']).toMap());
+      final mediaObjectData = await mediaObjectRepository.fetchData(
+          MediaObjectApiQuery(file: apiQuery![Strings.file]).toMap());
       final data = await repository.fetchData(PhotosApiQuery(
-              name: apiQuery['name'],
-              description: apiQuery['description'],
+              name: apiQuery[Strings.name],
+              description: apiQuery[Strings.description],
               popularImg: false,
               image: 'api/media_objects/${mediaObjectData.id}')
           .toMap());

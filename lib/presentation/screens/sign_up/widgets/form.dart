@@ -7,8 +7,6 @@ class Form extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bool isLoading = context
-        .select<SignUpCubit, bool>((value) => value.state.status.isLoading);
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
@@ -20,6 +18,7 @@ class Form extends StatelessWidget {
               initialValue: state.userName.value,
               hintText: AppLocalization.textUserName,
               iconAsset: AppAssets.iconUser,
+              textInputAction: TextInputAction.next,
               isRequired: true,
               onChanged: context.read<ValidateSignUpCubit>().userNameChanged,
               errorText: state.userName.invalid
@@ -35,6 +34,7 @@ class Form extends StatelessWidget {
             initialValue: state.birthday.value,
             hintText: AppLocalization.textBirthDay,
             iconAsset: AppAssets.iconCalendar,
+            textInputAction: TextInputAction.next,
             fieldType: TextFieldType.date,
             onChanged: context.read<ValidateSignUpCubit>().birthdayChanged,
             errorText: state.birthday.invalid
@@ -49,6 +49,7 @@ class Form extends StatelessWidget {
               initialValue: state.email.value,
               hintText: AppLocalization.textEmail,
               iconAsset: AppAssets.iconMail,
+              textInputAction: TextInputAction.next,
               isRequired: true,
               onChanged: context.read<ValidateSignUpCubit>().emailChanged,
               fieldType: TextFieldType.email,
@@ -64,6 +65,7 @@ class Form extends StatelessWidget {
             initialValue: state.password.value,
             hintText: AppLocalization.textOldPassword,
             iconAsset: AppAssets.iconEye,
+            textInputAction: TextInputAction.next,
             isRequired: true,
             fieldType: TextFieldType.password,
             onChanged: context.read<ValidateSignUpCubit>().passwordChanged,
@@ -93,7 +95,7 @@ class Form extends StatelessWidget {
             builder: (context, state) {
           return context.select<SignUpCubit, bool>(
                   (value) => value.state.status.isLoading)
-              ? CircularProgressIndicator(strokeWidth: 1)
+              ? Loading(loadingType: LoadingType.withoutLabel)
               : CupertinoTextButton(
                   label: AppLocalization.textSignUp,
                   isFilled: true,

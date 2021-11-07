@@ -50,6 +50,8 @@ class Photo extends Equatable {
     );
   }
 
+  int? get userId => user != null ? int.parse(user!.split('/').last) : null;
+
   String get photoUrl => '${Url.media}/${imageDataInfo!.name}';
 
   String get formattedDate => dateCreate != null

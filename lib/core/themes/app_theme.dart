@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
+import 'package:gallery/core/constants/insets.dart';
 
 import '../constants/colors.dart';
 import '../styles/styles.dart';
@@ -48,6 +49,18 @@ class AppTheme {
     dividerColor: AppColors.colorGray_1,
     appBarTheme: const AppBarTheme(
       backgroundColor: AppColors.colorWhite,
+    ),
+    snackBarTheme: SnackBarThemeData(
+      backgroundColor: AppColors.colorGray_5,
+      contentTextStyle: AppStyles.primaryTextStyleButton.copyWith(
+        fontSize: 18,
+        fontWeight: FontWeight.w400,
+      ),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(
+          Radius.circular(AppInsets.insetsRadius),
+        ),
+      ),
     ),
     pageTransitionsTheme: _pageTransitionsTheme,
     textSelectionTheme: TextSelectionThemeData(

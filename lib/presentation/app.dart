@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gallery/logic/cubits/authentication_cubit.dart';
+import 'package:gallery/logic/cubits/authentication_cubit/authentication_cubit.dart';
 
 import '../core/constants/localization.dart';
 import '../core/constants/routes.dart';
@@ -30,18 +30,20 @@ class _GalleryAppState extends State<GalleryApp> {
       builder: (context, child) {
         return BlocListener<AuthenticationCubit, AuthenticationState>(
           listener: (context, state) {
-            switch (state) {
-              case AuthenticationState.authenticated:
+            switch (state.status) {
+              case AuthenticationStatus.authenticated:
                 _navigator.pushNamedAndRemoveUntil(
                   AppRoutes.start,
                   (route) => false,
                 );
                 break;
-              case AuthenticationState.unauthenticated:
+              case AuthenticationStatus.unauthenticated:
                 _navigator.pushNamedAndRemoveUntil(
                   AppRoutes.welcome,
                   (route) => false,
                 );
+                break;
+              default:
                 break;
             }
           },

@@ -21,4 +21,5 @@ class AppAssets {
   static const String iconHome = 'assets/icons/tabs/Home.svg';
   static const String iconProfile = 'assets/icons/tabs/Profile.svg';
   static const String iconError = 'assets/icons/general/error_icon.svg';
+  static const String iconInfo = 'assets/icons/general/Info.svg';
 }

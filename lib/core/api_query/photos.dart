@@ -28,6 +28,6 @@ class PhotosApiQuery {
       'user.id': userId,
       'name': name,
       'image': image,
-    }..removeWhere((key, value) => value == null);
+    }..removeWhere((key, value) => value == null || value == '');
   }
 }

@@ -16,8 +16,11 @@ class Strings {
   static const String userId = 'USER_ID';
   static const String userSecret = 'USER_SECRET';
   static const String name = 'name';
+  static const String description = 'description';
+  static const String file = 'file';
+  static const String totalItems = 'totalItems';
   static const String refreshToken = 'refresh_token';
   static const String accessToken = 'access_token';
   static const String roleUser = 'ROLE_USER';
-  static const String dataObject = 'data';
+  static const String data = 'data';
 }

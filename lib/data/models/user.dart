@@ -51,6 +51,9 @@ class User extends Equatable {
   String get formattedDate =>
       DateFormat('dd.MM.yyyy').format(DateTime.parse(birthday!));
 
+  String get formattedFormData =>
+      DateFormat('dd/MM/yyyy').format(DateTime.parse(birthday!));
+
   String toJson() => json.encode(toMap());
 
   factory User.fromJson(String source) => User.fromMap(json.decode(source));

@@ -7,9 +7,11 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:gallery/core/themes/app_theme.dart';
 import 'package:gallery/data/repositories/repositories_import.dart';
 import 'package:gallery/data/services/services_import.dart';
-import 'package:gallery/logic/cubits/authentication_cubit.dart';
+import 'package:gallery/logic/cubits/authentication_cubit/authentication_cubit.dart';
 
 import 'package:gallery/logic/cubits/photos_cubit.dart';
+import 'package:gallery/logic/cubits/photos_filter_cubit/photos_filter_cubit.dart';
+import 'package:gallery/logic/cubits/photos_pagination_cubit.dart';
 import 'package:gallery/logic/cubits/sign_in_cubit.dart';
 import 'package:gallery/logic/cubits/sign_up_cubit.dart';
 import 'package:gallery/logic/cubits/upload_photo_cubit.dart';
@@ -60,6 +62,17 @@ Future<void> main() async {
         BlocProvider<PhotosCubit>(
           create: (BuildContext context) => PhotosCubit(
             PhotosRepository(PhotosService(httpClient)),
+          ),
+        ),
+        BlocProvider<PhotosFilterCubit>(
+          create: (BuildContext context) => PhotosFilterCubit(
+            context.read<PhotosCubit>(),
+          ),
+        ),
+        BlocProvider<PhotosPaginationCubit>(
+          create: (BuildContext context) => PhotosPaginationCubit(
+            context.read<PhotosCubit>(),
+            context.read<PhotosFilterCubit>(),
           ),
         ),
         BlocProvider<UploadPhotoCubit>(

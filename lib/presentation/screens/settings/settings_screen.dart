@@ -85,7 +85,7 @@ class SettingsScreen extends StatelessWidget {
             const SizedBox(height: 20),
             CupertinoTextButton(
               label: AppLocalization.textSignOut,
-              onPressed: () {},
+              onPressed: context.read<AuthenticationCubit>().logout,
               style: Theme.of(context).textTheme.bodyText1!.copyWith(
                     color: Theme.of(context).colorScheme.secondary,
                     fontSize: 14,

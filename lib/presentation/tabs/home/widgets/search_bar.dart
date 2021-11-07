@@ -19,7 +19,8 @@ class _SearchBarState extends State<SearchBar> {
 
   @override
   void initState() {
-    _controller = TextEditingController();
+    _controller = TextEditingController(
+        text: context.read<PhotosFilterCubit>().state.keyword);
     _focusNode = FocusNode();
     _controller.addListener(_searchListener);
     super.initState();
@@ -79,7 +80,7 @@ class _SearchBarState extends State<SearchBar> {
                     color: CupertinoColors.activeBlue,
                   ),
               onPressed: () {
-                _controller.clear();
+                _controller.clearComposing();
                 _focusNode.unfocus();
               },
             ),

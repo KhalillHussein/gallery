@@ -9,13 +9,10 @@ class RequestState<T> extends Equatable {
 
   final String? errorMessage;
 
-  final int? nextPage;
-
   const RequestState._({
     required this.status,
     this.value,
     this.errorMessage,
-    this.nextPage = 1,
   });
 
   factory RequestState.fromJson(Map<String, dynamic> json) {
@@ -44,8 +41,8 @@ class RequestState<T> extends Equatable {
           value: previousValue,
           status: RequestStatus.loading,
         );
-  const RequestState.loaded(T data, [int? page])
-      : this._(status: RequestStatus.success, value: data, nextPage: page);
+  const RequestState.loaded(T data)
+      : this._(status: RequestStatus.success, value: data);
 
   const RequestState.error(String error)
       : this._(

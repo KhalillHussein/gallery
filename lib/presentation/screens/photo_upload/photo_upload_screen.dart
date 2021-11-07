@@ -55,8 +55,8 @@ class _PhotoUploadScreenState extends State<PhotoUploadScreen> {
                                 description: _descriptionEditingController.text)
                             .toMap(),
                       );
-
                   Navigator.pop(context);
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
                 },
                 style: Theme.of(context).textTheme.button!.copyWith(
                       color: Theme.of(context).colorScheme.secondary,
@@ -97,4 +97,17 @@ class _PhotoUploadScreenState extends State<PhotoUploadScreen> {
       }),
     );
   }
+
+  final snackBar = SnackBar(
+    behavior: SnackBarBehavior.floating,
+    content: Row(
+      children: [
+        SvgPicture.asset(AppAssets.iconInfo),
+        const SizedBox(width: 15),
+        const Text(
+          AppLocalization.textPublicationHasBeenModerated,
+        ),
+      ],
+    ),
+  );
 }

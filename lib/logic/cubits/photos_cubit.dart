@@ -6,14 +6,16 @@ import '../../core/exceptions/api_exceptions.dart';
 import '../../data/models/photo.dart';
 
 class PhotosCubit extends RequestCubit<PhotosRepository, List<Photo>> {
-  PhotosCubit(PhotosRepository repository) : super(repository);
+  PhotosCubit(PhotosRepository repository) : super(repository, autoLoad: false);
+
+  int? get totalItems => repository.totalItems;
 
   @override
   Future<void> loadData([Map<String, dynamic>? apiQuery]) async {
     emit(RequestState.loading(state.value));
     try {
       final data = await repository.fetchData(apiQuery);
-      emit(RequestState.loaded(data, apiQuery!['page'] + 1));
+      emit(RequestState.loaded(data));
     } on DioError catch (e) {
       emit(RequestState.error(ApiException.fromDioError(e).message));
     } catch (e) {

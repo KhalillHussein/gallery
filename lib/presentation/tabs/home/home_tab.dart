@@ -7,13 +7,20 @@ class HomeTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Column(
-        children: const <Widget>[
+        children: <Widget>[
           Padding(
             padding: EdgeInsets.symmetric(
               vertical: 10,
               horizontal: AppInsets.insetsPadding,
             ),
-            child: SearchBar(),
+            child: SearchBar(
+              onChanged: (value) async {
+                await Future.delayed(
+                  Duration(milliseconds: 200),
+                  () => context.read<PhotosFilterCubit>().search(value),
+                );
+              },
+            ),
           ),
           Expanded(child: Tabs()),
         ],
